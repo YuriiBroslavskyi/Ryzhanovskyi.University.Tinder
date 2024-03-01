@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ryzhanovskyi.University.Tinder.Web", "Ryzhanovskyi.University.Tinder.Web\Ryzhanovskyi.University.Tinder.Web.csproj", "{AFD249BA-5C4F-49E5-ACC9-A3708B4FEE16}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ryzhanovskyi.University.Tinder.Test", "Ryzhanovskyi.University.Tinder.Test\Ryzhanovskyi.University.Tinder.Test.csproj", "{6E3544E8-0F8D-403F-94C7-054651022BD7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ryzhanovskyi.University.Tinder.Models", "Ryzhanovskyi.University.Tinder.Models\Ryzhanovskyi.University.Tinder.Models.csproj", "{B2C8532A-975B-498B-ABAC-1FC351BFFFF9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ryzhanovskyi.University.Tinder.Core", "Ryzhanovskyi.University.Tinder.Core\Ryzhanovskyi.University.Tinder.Core.csproj", "{F58209B1-70D8-4A95-A956-A4B659C268A5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AFD249BA-5C4F-49E5-ACC9-A3708B4FEE16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFD249BA-5C4F-49E5-ACC9-A3708B4FEE16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFD249BA-5C4F-49E5-ACC9-A3708B4FEE16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFD249BA-5C4F-49E5-ACC9-A3708B4FEE16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E3544E8-0F8D-403F-94C7-054651022BD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E3544E8-0F8D-403F-94C7-054651022BD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E3544E8-0F8D-403F-94C7-054651022BD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E3544E8-0F8D-403F-94C7-054651022BD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2C8532A-975B-498B-ABAC-1FC351BFFFF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2C8532A-975B-498B-ABAC-1FC351BFFFF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2C8532A-975B-498B-ABAC-1FC351BFFFF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2C8532A-975B-498B-ABAC-1FC351BFFFF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F58209B1-70D8-4A95-A956-A4B659C268A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F58209B1-70D8-4A95-A956-A4B659C268A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F58209B1-70D8-4A95-A956-A4B659C268A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F58209B1-70D8-4A95-A956-A4B659C268A5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5767A1CD-E624-44A2-BCB2-45617D5334E8}
+	EndGlobalSection
+EndGlobal
