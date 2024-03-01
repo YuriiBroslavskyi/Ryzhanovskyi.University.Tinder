@@ -17,8 +17,9 @@ Add your project documentation here.
 Add your task decomposition here.
 
 ### Week 1:
-- Implement feature: User Registration and User Login
-- Setup Azure Web App
-- Setup Azure SQL Database
-- Create basic project structure in GitHub repository ✔️
-- Set up Continuous Integration/Continuous Delivery pipeline
+- Implement feature: User Registration with Google OAuth 2.0
+- Set up Github repository ✔️
+- Configure Continuous Integration/Continuous Delivery pipeline
+- Create initial project structure ✔️
+- Define database schema and models 
+
