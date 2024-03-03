@@ -31,9 +31,21 @@ namespace Ryzhanovskiy.University.Tinder.Core.Services
             return url;
         }
 
-        public static object ExchangeCodeOnToken(string code)
+        public static object ExchangeCodeOnToken(string code, string codeVerifier, string redirectUrl)
         {
-            throw new NotImplementedException();
+            var tokenEndpoint = "https://oauth2.googleapis.com/token";
+            var AuthParams = new Dictionary<string, string>
+            {
+                {"client_id ", ClientId},
+                {"client_secret ", ClientSecret},
+                {"code ", code},
+                {"code_verifier ", codeVerifier},
+                {"grant_type ", "authorization_code"},
+                {"redirect_uri", redirectUrl}
+            };
+
+
+
         }
 
         public static object RefreshToken(string refreshToken)
