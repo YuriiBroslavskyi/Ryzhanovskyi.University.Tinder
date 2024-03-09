@@ -3,7 +3,6 @@ using Microsoft.Extensions.Options;
 using Ryzhanovskiy.University.Tinder.Core.Constants;
 using Ryzhanovskiy.University.Tinder.Models.Configuration;
 using Ryzhanovskyi.University.Tinder.Core.Interfaces;
-using Ryzhanovskyi.University.Tinder.Core.HttpMethodsForGoogleAuth;
 using System.Runtime.Intrinsics.Arm;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
@@ -11,51 +10,5 @@ using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 namespace Ryzhanovskiy.University.Tinder.Core.Services
 {
     public partial class GoogleAuthService : IGoogleAuthInterface
-    {
-        private const string ClientId = "460055857959-jo5beonip1crjebins8rtbus4796flua.apps.googleusercontent.com";
-        private const string ClientSecret = "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";
-
-        public static string GenerateOAuthRequestUrl(string scope, string redirectUrl, string codeChellange)
-        {
-            var oAuthServerEndpoint = "https://accounts.google.com/o/oauth2/v2/auth";
-
-            var queryParams = new Dictionary<string, string>
-            {
-                {"client_id", ClientId},
-                {"redirected_uri", redirectUrl},
-                {"response_type", "code"},
-                {"scope", scope },
-                {"code_challenge", codeChellange },
-                {"code_challenge_methode","S256"}
-            };
-            var url = QueryHelpers.AddQueryString(oAuthServerEndpoint, queryParams);
-            return url;
-        }
-
-        public static async Task<TokenResult> ExchangeCodeOnTokenAsync(string code, string codeVerifier, string redirectUrl)
-        {
-            var tokenEndpoint = "https://oauth2.googleapis.com/token";
-            var AuthParams = new Dictionary<string, string>
-            {
-                {"client_id ", ClientId},
-                {"client_secret ", ClientSecret},
-                {"code ", code},
-                {"code_verifier ", codeVerifier},
-                {"grant_type ", "authorization_code"},
-                {"redirect_uri", redirectUrl}
-            };
-
-            var tokenResult = await HttpMethdos.SendPostRequest<TokenResult>(tokenEndpoint, AuthParams);
-            return tokenResult;
-    }
-
-
-}
-
-        public static object RefreshToken(string refreshToken)
-        {
-            throw new NotImplementedException();
-
-        }
-    }
+    { }
 }
