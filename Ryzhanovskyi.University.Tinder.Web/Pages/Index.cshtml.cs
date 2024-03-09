@@ -14,7 +14,8 @@ namespace Ryzhanovskiy.University.Tinder.Web.Pages
 
         public void OnGet()
         {
-
+            var clientID = _logger["Authentication:Google:ClientID"];
+            var clientSecret = _logger["Authentication:Google:ClientSecret"];
         }
     }
 }
