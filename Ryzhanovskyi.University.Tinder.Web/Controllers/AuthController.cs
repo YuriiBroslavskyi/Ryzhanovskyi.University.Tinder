@@ -1,0 +1,27 @@
+﻿using BCrypt.Net;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Ryzhanovskyi.University.Tinder.Models.Models;
+
+namespace Ryzhanovskyi.University.Tinder.Web.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class AuthController : ControllerBase
+    {
+        public static User user = new User();
+
+        [HttpPost("register")]
+
+        public ActionResult<User> Register(UserRequestDto request)
+        {
+            string passwordHash
+                = BCrypt.Net.BCrypt.HashPassword(request.Password);
+            
+            user.UserName = request.Username;
+            user.PasswordHash = passwordHash;
+
+            return Ok(user);
+        }
+    }
+}
