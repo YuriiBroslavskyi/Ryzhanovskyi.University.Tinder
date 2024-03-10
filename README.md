@@ -19,6 +19,7 @@ Add your task decomposition here.
 ### Week 1:
 - Implement feature: User Registration with Google OAuth 2.0
 - Set up Github repository ✔️
+- Configure welcome email after successful registration
 - Configure Continuous Integration/Continuous Delivery pipeline
 - Create initial project structure ✔️
 - Define database schema and models ✔️
