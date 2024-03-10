@@ -1,7 +1,11 @@
-﻿using BCrypt.Net;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using BCrypt.Net;
 using Ryzhanovskyi.University.Tinder.Models.Models;
+using Ryzhanovskyi.University.Tinder.Web.Data;
 
 namespace Ryzhanovskyi.University.Tinder.Web.Controllers
 {
@@ -9,33 +13,51 @@ namespace Ryzhanovskyi.University.Tinder.Web.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        public static User user = new User();
+        private readonly DataContext _context;
+
+        public AuthController(DataContext context)
+        {
+            _context = context;
+        }
 
         [HttpPost("register")]
-
-        public ActionResult<User> Register(UserRequestDto request)
+        public async Task<ActionResult<User>> Register(UserRequestDto request)
         {
-            string passwordHash
-                = BCrypt.Net.BCrypt.HashPassword(request.Password);
-            
-            user.UserName = request.Username;
-            user.Email = request.Email;
-            user.PasswordHash = passwordHash;
+
+            if (await _context.Users.AnyAsync(u => u.Email == request.Email))
+            {
+                return BadRequest("Email is already registered.");
+            }
+
+
+            string passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
+
+            var user = new User
+            {
+                UserName = request.Username,
+                Email = request.Email,
+                PasswordHash = passwordHash
+            };
+
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
 
             return Ok(user);
         }
-        [HttpPost("login")]
 
-        public ActionResult<User> Login(UserRequestDto request)
+        [HttpPost("login")]
+        public async Task<ActionResult<User>> Login(UserRequestDto request)
         {
-            if(user.Email != request.Email)
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
+
+            if (user == null)
             {
-                return BadRequest("User not Found");
+                return BadRequest("User not found.");
             }
 
-            if(!BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
+            if (!BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
             {
-                return BadRequest("Wrong Password");
+                return BadRequest("Wrong password.");
             }
 
             return Ok(user);
