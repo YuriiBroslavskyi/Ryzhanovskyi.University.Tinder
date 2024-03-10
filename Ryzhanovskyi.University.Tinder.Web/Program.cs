@@ -1,10 +1,12 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Ryzhanovskiy.University.Tinder.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 var configuration = builder.Configuration;
 
-services.AddAuthentication().AddGoogle(googleOptions =>
+services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(o => o.LoginPath = new PathString("/signin-google")).AddGoogle(googleOptions =>
 {
     googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
     googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
