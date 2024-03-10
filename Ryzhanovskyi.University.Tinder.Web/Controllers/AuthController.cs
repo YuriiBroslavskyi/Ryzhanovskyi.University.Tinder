@@ -23,5 +23,21 @@ namespace Ryzhanovskyi.University.Tinder.Web.Controllers
 
             return Ok(user);
         }
+        [HttpPost("login")]
+
+        public ActionResult<User> Login(UserRequestDto request)
+        {
+            if(user.UserName != request.Username)
+            {
+                return BadRequest("User not Found");
+            }
+
+            if(!BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
+            {
+                return BadRequest("Wrong Password");
+            }
+
+            return Ok(user);
+        }
     }
 }
