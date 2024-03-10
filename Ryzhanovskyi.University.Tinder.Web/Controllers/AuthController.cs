@@ -19,6 +19,7 @@ namespace Ryzhanovskyi.University.Tinder.Web.Controllers
                 = BCrypt.Net.BCrypt.HashPassword(request.Password);
             
             user.UserName = request.Username;
+            user.Email = request.Email;
             user.PasswordHash = passwordHash;
 
             return Ok(user);
@@ -27,7 +28,7 @@ namespace Ryzhanovskyi.University.Tinder.Web.Controllers
 
         public ActionResult<User> Login(UserRequestDto request)
         {
-            if(user.UserName != request.Username)
+            if(user.Email != request.Email)
             {
                 return BadRequest("User not Found");
             }
