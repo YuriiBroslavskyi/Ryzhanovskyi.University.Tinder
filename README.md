@@ -21,5 +21,12 @@ Add your task decomposition here.
 - Set up Github repository ✔️
 - Configure Continuous Integration/Continuous Delivery pipeline
 - Create initial project structure ✔️
-- Define database schema and models 
+- Define database schema and models ✔️
+
+### Week 2:
+- Implement feature: Profile Creation
+- Design user interface wireframes
+- Set up basic authentication and authorization middleware
+- Create user profile database functionality
+- Begin frontend development for profile creation page
 
