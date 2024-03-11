@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.EntityFrameworkCore;
 using Ryzhanovskiy.University.Tinder.Core;
+using Ryzhanovskyi.University.Tinder.Core.Interfaces;
+using Ryzhanovskyi.University.Tinder.Core.Services;
 using Ryzhanovskyi.University.Tinder.Web.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,12 +16,28 @@ services.AddDbContext<DataContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 });
 
-services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-            .AddCookie(o => o.LoginPath = new PathString("/signin-google")).AddGoogle(googleOptions =>
+/*services.AddAuthentication().AddGoogle(googleOptions =>
 {
     googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
     googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
-}); 
+});
+*/
+
+
+/*services.AddAuthentication(options =>
+{
+    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+})
+.AddCookie()
+.AddGoogle(googleOptions =>
+{
+    googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
+    googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
+});*/
+
+services.AddTransient<IEmailSender, EmailSender>();
+services.AddControllersWithViews();
 
 builder.Services.RegisterCoreConfiguration(builder.Configuration);
 builder.Services.RegisterCoreDependencies();

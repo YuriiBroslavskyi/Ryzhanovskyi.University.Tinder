@@ -20,7 +20,6 @@ namespace Ryzhanovskyi.University.Tinder.Web.Controllers
         {
             try
             {
-                // Send email asynchronously
                 await _emailSender.SendEmailAsync(model.Email, model.Subject, model.Message);
                 return Ok("Email sent successfully");
             }

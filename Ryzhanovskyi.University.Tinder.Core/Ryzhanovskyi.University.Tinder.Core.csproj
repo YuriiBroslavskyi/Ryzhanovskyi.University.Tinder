@@ -28,9 +28,5 @@
   <ItemGroup>
     <ProjectReference Include="..\Ryzhanovskyi.University.Tinder.Models\Ryzhanovskyi.University.Tinder.Models.csproj" />
   </ItemGroup>
-	
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
 
 </Project>
