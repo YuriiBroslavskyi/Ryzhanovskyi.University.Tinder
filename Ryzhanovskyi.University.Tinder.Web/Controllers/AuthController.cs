@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using BCrypt.Net;
 using Ryzhanovskyi.University.Tinder.Models.Models;
 using Ryzhanovskyi.University.Tinder.Web.Data;
+using Ryzhanovskyi.University.Tinder.Core.Interfaces;
+using Ryzhanovskyi.University.Tinder.Core.Services;
 
 namespace Ryzhanovskyi.University.Tinder.Web.Controllers
 {
@@ -14,10 +16,13 @@ namespace Ryzhanovskyi.University.Tinder.Web.Controllers
     public class AuthController : ControllerBase
     {
         private readonly DataContext _context;
+        private readonly IEmailSender _emailSender;
 
-        public AuthController(DataContext context)
+
+        public AuthController(DataContext context, IEmailSender emailSender)
         {
             _context = context;
+            _emailSender = emailSender;
         }
 
         [HttpPost("register")]
@@ -29,7 +34,6 @@ namespace Ryzhanovskyi.University.Tinder.Web.Controllers
                 return BadRequest("Email is already registered.");
             }
 
-
             string passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
 
             var user = new User
@@ -38,6 +42,14 @@ namespace Ryzhanovskyi.University.Tinder.Web.Controllers
                 Email = request.Email,
                 PasswordHash = passwordHash
             };
+
+            var welcomeEmail = new EmailModel
+            { Email = request.Email,
+              Subject = "Mail for succesfully registration at GnomeLove",
+              Message = $"Welcome {user.UserName} to Dating Web APP GnoneLove, good luck in searching ur love ^_^\""
+            };
+            await _emailSender.SendEmailAsync(welcomeEmail.Email, welcomeEmail.Subject, welcomeEmail.Message);
+
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
