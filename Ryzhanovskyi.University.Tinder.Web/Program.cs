@@ -39,6 +39,9 @@ services.AddIdentity<User, IdentityRole>(
         options.Password.RequireNonAlphanumeric = false;
     }).AddEntityFrameworkStores<DataContext>().AddDefaultTokenProviders();
 
+services.AddScoped<IAuthService, AuthService>();
+
+
 services.AddTransient<IEmailSender, EmailSender>();
 services.AddControllersWithViews();
 
