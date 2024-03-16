@@ -11,16 +11,14 @@ namespace Ryzhanovskyi.University.Tinder.Models.Models
     public class User : IdentityUser
     {
         [Required]
-        public string UserName { get; set; } = string.Empty;
+        public override string UserName { get; set; } = string.Empty;
         [Required]
-        public string PasswordHash { get; set; } = string.Empty;
+        public override string PasswordHash { get; set; } = string.Empty;
 
         [Required]
         [EmailAddress(ErrorMessage = "Invalid email adress.")]
-        public string Email { get; set; }
-
-        public int Age { get; set; }
-
+        public override string Email { get; set; } = string.Empty;
+        public int Age { get; set; } = 18;
         public string Gender { get; set; } = string.Empty;
 
         public string City { get; set; } = string.Empty;
@@ -33,4 +31,5 @@ namespace Ryzhanovskyi.University.Tinder.Models.Models
 
 
     }
+
 }
