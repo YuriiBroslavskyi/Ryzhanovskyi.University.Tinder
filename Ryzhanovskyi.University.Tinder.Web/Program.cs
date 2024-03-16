@@ -5,10 +5,15 @@ using Ryzhanovskiy.University.Tinder.Core;
 using Ryzhanovskyi.University.Tinder.Core.Interfaces;
 using Ryzhanovskyi.University.Tinder.Core.Services;
 using Ryzhanovskyi.University.Tinder.Web.Data;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 var configuration = builder.Configuration;
+
+services.AddDbContext<DataContext>(options =>
+    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+
 
 /*services.AddAuthentication().AddGoogle(googleOptions =>
 {
