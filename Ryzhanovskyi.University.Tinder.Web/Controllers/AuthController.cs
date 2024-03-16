@@ -32,7 +32,7 @@ namespace Ryzhanovskyi.University.Tinder.Web.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<User>> Login(UserRequestDto request)
+        public async Task<ActionResult<User>> Login(UserRequestLogDto request)
         {
             var user = await _authService.LoginAsync(request);
 

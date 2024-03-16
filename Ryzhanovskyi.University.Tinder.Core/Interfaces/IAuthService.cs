@@ -11,6 +11,6 @@ namespace Ryzhanovskyi.University.Tinder.Core.Interfaces
     public interface IAuthService
     {
         Task<User> RegisterAsync(UserRequestDto request);
-        Task<User> LoginAsync(UserRequestDto request);
+        Task<User> LoginAsync(UserRequestLogDto request);
     }
 }

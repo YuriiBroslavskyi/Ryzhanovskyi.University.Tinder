@@ -41,7 +41,6 @@ services.AddIdentity<User, IdentityRole>(
 
 services.AddScoped<IAuthService, AuthService>();
 
-
 services.AddTransient<IEmailSender, EmailSender>();
 services.AddControllersWithViews();
 

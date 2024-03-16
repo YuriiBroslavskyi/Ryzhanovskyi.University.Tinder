@@ -5,6 +5,7 @@ using Ryzhanovskyi.University.Tinder.Models.Models;
 using Ryzhanovskyi.University.Tinder.Web.Data;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,18 +53,18 @@ namespace Ryzhanovskyi.University.Tinder.Core.Services
             return user; 
         }
 
-        public async Task<User> LoginAsync(UserRequestDto request)
+        public async Task<User> LoginAsync(UserRequestLogDto request)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
 
             if (user == null)
             {
-                return null; 
+                throw new SyntaxErrorException("User not found.");
             }
 
             if (!BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
             {
-                return null; 
+                throw new SyntaxErrorException("Incorrect password.");
             }
 
             return user;
