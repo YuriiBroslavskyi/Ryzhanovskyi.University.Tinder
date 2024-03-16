@@ -46,7 +46,7 @@ namespace Ryzhanovskyi.University.Tinder.Web.Controllers
             var welcomeEmail = new EmailModel
             { Email = request.Email,
               Subject = "Mail for succesfully registration at GnomeLove",
-              Message = $"Welcome {user.UserName} to Dating Web APP GnoneLove, good luck in searching ur love ^_^"
+              Message = $"Welcome {user.UserName} to Dating Web APP GnomeLove, good luck in searching ur love ^_^"
             };
             await _emailSender.SendEmailAsync(welcomeEmail.Email, welcomeEmail.Subject, welcomeEmail.Message);
 
