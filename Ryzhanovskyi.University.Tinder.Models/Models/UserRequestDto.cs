@@ -5,16 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ryzhanovskyi.University.Tinder.Models.Models
+namespace Ryzhanovskyi.University.Tinder.Models.Auth
 {
     public class UserRequestDto
     {
-        public required string Username { get; set; } = string.Empty;
+        [Required(ErrorMessage = "Username is required")]
+        public string Username { get; set; }
 
-        public required string Password { get; set; } = string.Empty;
+        [Required(ErrorMessage = "Password is required")]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
 
-        [EmailAddress(ErrorMessage = "Invalid email adress.")]
-        public required string Email {  get; set; } = string.Empty;
+        [Required(ErrorMessage = "Email is required")]
+        [EmailAddress(ErrorMessage = "Invalid email address")]
+        public string Email { get; set; }
+
 
     }
 }
