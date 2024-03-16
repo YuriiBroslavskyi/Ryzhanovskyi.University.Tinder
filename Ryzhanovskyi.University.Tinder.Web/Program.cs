@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Ryzhanovskiy.University.Tinder.Core;
 using Ryzhanovskyi.University.Tinder.Core.Interfaces;
 using Ryzhanovskyi.University.Tinder.Core.Services;
+using Ryzhanovskyi.University.Tinder.Models.Models;
 using Ryzhanovskyi.University.Tinder.Web.Data;
 using System.Configuration;
 
@@ -13,14 +15,6 @@ var configuration = builder.Configuration;
 
 services.AddDbContext<DataContext>(options =>
     options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
-
-
-/*services.AddAuthentication().AddGoogle(googleOptions =>
-{
-    googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
-    googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
-});
-*/
 
 
 /*services.AddAuthentication(options =>
@@ -34,6 +28,16 @@ services.AddDbContext<DataContext>(options =>
     googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
     googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
 });*/
+
+services.AddIdentity<User, IdentityRole>(
+    options =>
+    {
+        options.Password.RequiredUniqueChars = 0;
+        options.Password.RequireUppercase = false;
+        options.Password.RequireLowercase = false;
+        options.Password.RequiredLength = 6;
+        options.Password.RequireNonAlphanumeric = false;
+    }).AddEntityFrameworkStores<DataContext>().AddDefaultTokenProviders();
 
 services.AddTransient<IEmailSender, EmailSender>();
 services.AddControllersWithViews();

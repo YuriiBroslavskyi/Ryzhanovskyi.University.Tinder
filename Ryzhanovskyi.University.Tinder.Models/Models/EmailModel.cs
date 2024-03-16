@@ -1,4 +1,4 @@
-﻿namespace Ryzhanovskyi.University.Tinder.Web.Controllers
+﻿namespace Ryzhanovskyi.University.Tinder.Models.Models
 {
     public class EmailModel
     {

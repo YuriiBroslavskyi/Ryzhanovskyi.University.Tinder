@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Ryzhanovskyi.University.Tinder.Core.Interfaces;
 using System.Threading.Tasks;
+using Ryzhanovskyi.University.Tinder.Models.Models;
 
 namespace Ryzhanovskyi.University.Tinder.Web.Controllers
 {
