@@ -1,6 +1,6 @@
 ﻿@page
 @using Ryzhanovskyi.University.Tinder.Models.Auth
-@model Ryzhanovskyi.University.Tinder.Web.Pages.Account.LoginModel
+@model Ryzhanovskyi.University.Tinder.Web.Pages.Auth.LoginModel
 
 @{
     ViewData["Title"] = "Login";
@@ -34,3 +34,9 @@
         </div>
     </div>
 </div>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
