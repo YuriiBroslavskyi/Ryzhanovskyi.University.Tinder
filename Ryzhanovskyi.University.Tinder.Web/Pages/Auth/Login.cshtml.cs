@@ -25,7 +25,7 @@ namespace Ryzhanovskyi.University.Tinder.Web.Pages.Auth
 
                 if (result != null)
                 {
-                    return RedirectToPage("/Index");
+                    return RedirectToPage("/main");
                 }
                 else
                 {
