@@ -1,0 +1,75 @@
+﻿@page
+@model Ryzhanovskyi.University.Tinder.Web.Pages.ProfileCreation.ProfileCreationModel
+@{
+    ViewData["Title"] = "Profile Creation";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 card p-4">
+            <h2 class="text-center text-info mb-4">Register</h2>
+
+            <form asp-action="Login" method="post">
+                <div asp-validation-summary="ModelOnly" class="mb-3"></div>
+
+                <div class="mb-3">
+                    <label asp-for="ProfileRequest.Email"></label>
+                    <input asp-for="ProfileRequest.Email" class="form-control" />
+                    <span asp-validation-for="ProfileRequest.Email" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ProfileRequest.Username"></label>
+                    <input asp-for="ProfileRequest.Username" class="form-control" />
+                    <span asp-validation-for="ProfileRequest.Username" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ProfileRequest.Password"></label>
+                    <input type="password" asp-for="ProfileRequest.Password" class="form-control" />
+                    <span asp-validation-for="ProfileRequest.Password" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ProfileRequest.Age"></label>
+                    <input type="number" asp-for="ProfileRequest.Age" class="form-control" />
+                    <span asp-validation-for="ProfileRequest.Age" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ProfileRequest.Gender"></label>
+                    <select asp-for="ProfileRequest.Gender" class="form-control">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                    <span asp-validation-for="ProfileRequest.Gender" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ProfileRequest.City"></label>
+                    <input asp-for="ProfileRequest.City" class="form-control" />
+                    <span asp-validation-for="ProfileRequest.City" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ProfileRequest.Description"></label>
+                    <textarea asp-for="ProfileRequest.Description" class="form-control" rows="4"></textarea>
+                    <span asp-validation-for="ProfileRequest.Description" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ProfileRequest.Photo"></label>
+                    <input type="file" asp-for="ProfileRequest.Photo" class="form-control-file" />
+                    <span asp-validation-for="ProfileRequest.Photo" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <a href="Register" class="text-decoration-none">Don't have an account?</a>
+                    <input type="submit" value="Login" class="btn btn-primary" />
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+x

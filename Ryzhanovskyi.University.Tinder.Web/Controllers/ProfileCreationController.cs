@@ -3,53 +3,42 @@ using Microsoft.EntityFrameworkCore;
 using Ryzhanovskyi.University.Tinder.Web.Data;
 using Ryzhanovskyi.University.Tinder.Models.Models;
 using System.Threading.Tasks;
+using Ryzhanovskyi.University.Tinder.Core.Interfaces;
+using Ryzhanovskyi.University.Tinder.Core.Services;
 
 namespace Ryzhanovskyi.University.Tinder.Web.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     public class ProfileCreationController : ControllerBase
     {
-        private readonly DataContext _context;
+        private readonly IProfileService _profileservice;
 
-        public ProfileCreationController(DataContext context)
+        public ProfileCreationController(IProfileService profileService)
         {
-            _context = context;
+            _profileservice = profileService;
         }
 
-        [HttpPost]
+        [HttpPost("ProfileCreation")]
         public async Task<IActionResult> CreateProfile(ProfileRequestDto request)
         {
-            var profile = await _context.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
+            var profile = await _profileservice.CreateProfile(request);
 
             if (profile == null)
             {
                 return RedirectToAction("Register", "Auth");
-
             }
 
             if (request.Gender != "Male" && request.Gender != "Female")
             {
                 return BadRequest("Choose Male or Female.");
             }
-            profile.Gender = request.Gender;
-
             if (request.Age < 18)
             {
                 return BadRequest("Your age must be at least 18.");
             }
-            profile.Age = request.Age;
-
-            profile.UserName = request.Username;
-            profile.Email = request.Email;
-            profile.PasswordHash = request.Password;
-            profile.City = request.City;
-            profile.Description = request.Description;
-            profile.Photo = request.Photo;
-
             try
             {
-                await _context.SaveChangesAsync();
                 return Ok(profile);
             }
             catch (DbUpdateException)

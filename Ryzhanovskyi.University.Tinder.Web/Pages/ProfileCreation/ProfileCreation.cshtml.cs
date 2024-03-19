@@ -4,27 +4,26 @@ using Ryzhanovskyi.University.Tinder.Core.Interfaces;
 using Ryzhanovskyi.University.Tinder.Core.Services;
 using Ryzhanovskyi.University.Tinder.Models.Auth;
 using Ryzhanovskyi.University.Tinder.Models.Models;
-using System.Threading.Tasks;
 
-namespace Ryzhanovskyi.University.Tinder.Web.Pages.Auth
+
+namespace Ryzhanovskyi.University.Tinder.Web.Pages.ProfileCreation
 {
-    public class RegisterModel : PageModel
+    public class ProfileCreationModel : PageModel
     {
-        private readonly IAuthService _authService;
+        private readonly IProfileService _profileCreation;
 
-        public RegisterModel(IAuthService authService)
+        public ProfileCreationModel(IProfileService profileCreation)
         {
-            _authService = authService;
+            _profileCreation = profileCreation;
         }
 
         [BindProperty]
-        public UserRequestDto UserRequest { get; set; }
-
+        public ProfileRequestDto ProfileRequest { get; set; }
         public async Task<IActionResult> OnPostAsync()
         {
             if (ModelState.IsValid)
             {
-                var result = await _authService.RegisterAsync(UserRequest);
+                var result = await _profileCreation.CreateProfile(ProfileRequest);
 
                 if (result != null)
                 {
@@ -32,10 +31,9 @@ namespace Ryzhanovskyi.University.Tinder.Web.Pages.Auth
                 }
                 else
                 {
-                    return BadRequest("/Error");
+                    return RedirectToPage("/Auth/Register");
                 }
             }
-
             return Page();
         }
     }

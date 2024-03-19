@@ -16,7 +16,6 @@ var configuration = builder.Configuration;
 services.AddDbContext<DataContext>(options =>
     options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-
 /*services.AddAuthentication(options =>
 {
     options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -40,6 +39,7 @@ services.AddIdentity<User, IdentityRole>(
     }).AddEntityFrameworkStores<DataContext>().AddDefaultTokenProviders();
 
 services.AddScoped<IAuthService, AuthService>();
+services.AddScoped<IProfileService, ProfileService>();
 
 services.AddTransient<IEmailSender, EmailSender>();
 services.AddControllersWithViews();
@@ -68,9 +68,10 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-app.UseRouting();   
+app.UseRouting();
 
 app.UseAuthorization();
+app.UseAuthentication();
 
 app.MapRazorPages();
 app.MapControllers();
