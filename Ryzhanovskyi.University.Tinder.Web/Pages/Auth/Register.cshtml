@@ -1,5 +1,5 @@
 ﻿@page
-@using Ryzhanovskyi.University.Tinder.Models.Models
+@using Ryzhanovskyi.University.Tinder.Models.Auth
 @model Ryzhanovskyi.University.Tinder.Web.Pages.Auth.RegisterModel
 
 @{
@@ -11,7 +11,7 @@
         <div class="col-md-6 card p-4">
             <h2 class="text-center text-info mb-4">Register</h2>
 
-            <form asp-action="Login" method="post">
+            <form asp-action="Register" method="post">
                 <div asp-validation-summary="ModelOnly" class="mb-3"></div>
 
                 <div class="mb-3">

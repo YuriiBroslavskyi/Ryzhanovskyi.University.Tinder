@@ -27,7 +27,6 @@ namespace Ryzhanovskyi.University.Tinder.Web.Pages.Profile
 
                 if (User != null)
                 {
-                    // Redirect to the account page with user ID included in the URL
                     return RedirectToPage("/ProfileCreation/Account", new { Id = User.Id });
                 }
                 else
@@ -35,9 +34,7 @@ namespace Ryzhanovskyi.University.Tinder.Web.Pages.Profile
                     return NotFound("User not found");
                 }
             }
-
-            // Handle the case when user is not authenticated
-            return RedirectToPage("/Auth/Login");
+            return Page();
         }
     }
 }
