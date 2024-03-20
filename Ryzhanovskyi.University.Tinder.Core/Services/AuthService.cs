@@ -55,19 +55,19 @@ namespace Ryzhanovskyi.University.Tinder.Core.Services
 
         public async Task<User> LoginAsync(UserRequestLogDto request)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
+            var User = await _context.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
 
-            if (user == null)
+            if (User == null)
             {
                 throw new SyntaxErrorException("User not found.");
             }
 
-            if (!BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
+            if (!BCrypt.Net.BCrypt.Verify(request.Password, User.PasswordHash))
             {
                 throw new SyntaxErrorException("Incorrect password.");
             }
 
-            return user;
+            return User;
         }
     }
 }

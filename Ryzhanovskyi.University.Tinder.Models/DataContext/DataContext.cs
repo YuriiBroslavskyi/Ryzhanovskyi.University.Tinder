@@ -18,6 +18,8 @@ namespace Ryzhanovskyi.University.Tinder.Web.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+            optionsBuilder.EnableSensitiveDataLogging();
+
         }
         public DbSet<User> Users { get; set; }
     }

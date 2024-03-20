@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Ryzhanovskyi.University.Tinder.Core.Interfaces;
 using Ryzhanovskyi.University.Tinder.Models.Auth;
+using Ryzhanovskyi.University.Tinder.Models.Models;
 
 namespace Ryzhanovskyi.University.Tinder.Web.Pages.Auth
 {
@@ -16,20 +17,21 @@ namespace Ryzhanovskyi.University.Tinder.Web.Pages.Auth
 
         [BindProperty]
         public UserRequestLogDto UserRequestLog { get; set; }
+        public User User { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
             if (ModelState.IsValid)
             {
-                var result = await _authService.LoginAsync(UserRequestLog);
+                User = await _authService.LoginAsync(UserRequestLog); 
 
-                if (result != null)
+                if (User != null)
                 {
-                    return RedirectToPage("/main");
+                    return RedirectToAction("GetAccountDetails", "ProfileCreation", new { Id = User.Id });
                 }
                 else
                 {
-                    return BadRequest("Wrong Password or Account with this email doesn`t exist");
+                    return BadRequest("Wrong Password or Account with this email doesn't exist");
                 }
             }
 
@@ -37,3 +39,4 @@ namespace Ryzhanovskyi.University.Tinder.Web.Pages.Auth
         }
     }
 }
+

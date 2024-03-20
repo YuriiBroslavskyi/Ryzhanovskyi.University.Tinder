@@ -34,14 +34,14 @@ namespace Ryzhanovskyi.University.Tinder.Web.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<User>> Login(UserRequestLogDto request)
         {
-            var user = await _authService.LoginAsync(request);
+            var User = await _authService.LoginAsync(request);
 
-            if (user == null)
+            if (User == null)
             {
                 return BadRequest("Invalid email or password.");
             }
 
-            return Ok(user);
+            return Ok(User);
         }
     }
 }

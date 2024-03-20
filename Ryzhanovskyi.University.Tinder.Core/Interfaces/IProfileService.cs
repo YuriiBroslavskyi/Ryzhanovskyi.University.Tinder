@@ -11,6 +11,8 @@ namespace Ryzhanovskyi.University.Tinder.Core.Interfaces
     public interface IProfileService
     {
         Task<User> CreateProfile(ProfileRequestDto request);
+        Task<User> GetUserDetails(string Id);
+        /*Task<User> UpdateProfile(ProfileRequestDto request);*/
     }
 
 }

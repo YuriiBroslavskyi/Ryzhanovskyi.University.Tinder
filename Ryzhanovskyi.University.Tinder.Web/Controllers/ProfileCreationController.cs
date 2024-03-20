@@ -9,7 +9,7 @@ using Ryzhanovskyi.University.Tinder.Core.Services;
 namespace Ryzhanovskyi.University.Tinder.Web.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class ProfileCreationController : ControllerBase
     {
         private readonly IProfileService _profileservice;
@@ -45,6 +45,19 @@ namespace Ryzhanovskyi.University.Tinder.Web.Controllers
             {
                 return BadRequest("An error occurred while updating the profile.");
             }
+        }
+
+        [HttpGet("account{Id}")]
+        public async Task<ActionResult<User>> GetAccountDetails(string Id)
+        {
+            var user = await _profileservice.GetUserDetails(Id);
+
+            if (user == null)
+            {
+                return NotFound("User nor found"); 
+            }
+
+            return user;
         }
     }
 }

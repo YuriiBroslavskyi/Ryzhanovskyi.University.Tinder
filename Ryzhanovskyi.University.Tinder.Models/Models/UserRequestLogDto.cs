@@ -17,7 +17,5 @@ namespace Ryzhanovskyi.University.Tinder.Models.Auth
         [Required(ErrorMessage = "Email is required")]
         [EmailAddress(ErrorMessage = "Invalid email address")]
         public string Email { get; set; }
-
-
     }
 }

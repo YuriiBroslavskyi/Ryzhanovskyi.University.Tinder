@@ -14,6 +14,7 @@ namespace Ryzhanovskiy.University.Tinder.Web.Pages
 
         public void OnGet()
         {
+
         }
     }
 }

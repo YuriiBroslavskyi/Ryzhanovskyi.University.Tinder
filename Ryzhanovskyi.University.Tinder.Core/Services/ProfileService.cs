@@ -44,10 +44,6 @@ namespace Ryzhanovskyi.University.Tinder.Core.Services
 
             profile.Age = request.Age;
 
-
-            profile.UserName = request.Username;
-            profile.Email = request.Email;
-            profile.PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
             profile.City = request.City;
             profile.Description = request.Description;
             profile.Photo = request.Photo;
@@ -55,6 +51,16 @@ namespace Ryzhanovskyi.University.Tinder.Core.Services
 
             await _context.SaveChangesAsync();
             return profile;
+        }
+        public async Task<User> GetUserDetails(string Id)
+        {
+            var user = await _context.Users.FindAsync(Id);
+            if (user == null)
+            {
+                return null;
+            }
+
+            return user;
         }
     }
 }

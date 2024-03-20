@@ -28,6 +28,10 @@ services.AddDbContext<DataContext>(options =>
     googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
 });*/
 
+services.AddAuthentication(options =>
+    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme);
+
+
 services.AddIdentity<User, IdentityRole>(
     options =>
     {
@@ -70,8 +74,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthorization();
 app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapRazorPages();
 app.MapControllers();
