@@ -10,6 +10,8 @@ namespace Ryzhanovskyi.University.Tinder.Web.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Produces("application/json")]
+
     public class ProfileCreationController : ControllerBase
     {
         private readonly IProfileService _profileservice;
@@ -47,8 +49,8 @@ namespace Ryzhanovskyi.University.Tinder.Web.Controllers
             }
         }
 
-        [HttpGet("account{Id}")]
-        public async Task<ActionResult<User>> GetAccountDetails(string Id)
+        [HttpGet("Account/{Id}")]
+        public async Task<ActionResult<User>> GetAccountDetails(string Id)  
         {
             var user = await _profileservice.GetUserDetails(Id);
 

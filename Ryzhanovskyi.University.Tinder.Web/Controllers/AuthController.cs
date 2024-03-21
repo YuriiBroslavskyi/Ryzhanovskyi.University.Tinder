@@ -3,12 +3,17 @@ using System.Threading.Tasks;
 using Ryzhanovskyi.University.Tinder.Core.Interfaces;
 using Ryzhanovskyi.University.Tinder.Models.Auth;
 using Ryzhanovskyi.University.Tinder.Models.Models;
-using Ryzhanovskyi.University.Tinder.Core.Services;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using System.Collections.Generic;
 
 namespace Ryzhanovskyi.University.Tinder.Web.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("[controller]")]
+    [Produces("application/json")]
+
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _authService;
@@ -18,7 +23,7 @@ namespace Ryzhanovskyi.University.Tinder.Web.Controllers
             _authService = authService;
         }
 
-        [HttpPost("register")]
+        [HttpPost("Register")]
         public async Task<ActionResult<User>> Register(UserRequestDto request)
         {
             var user = await _authService.RegisterAsync(request);
@@ -30,18 +35,36 @@ namespace Ryzhanovskyi.University.Tinder.Web.Controllers
 
             return Ok(user);
         }
-
-        [HttpPost("login")]
-        public async Task<ActionResult<User>> Login(UserRequestLogDto request)
+        [HttpPost("Login")]
+        public async Task<IActionResult> Login(UserRequestLogDto request)
         {
             var User = await _authService.LoginAsync(request);
 
-            if (User == null)
-            {
-                return BadRequest("Invalid email or password.");
-            }
+            if (User != null) {
 
-            return Ok(User);
+                var claims = new List<Claim>
+                {
+                new Claim(ClaimTypes.Name, User.UserName)
+                };
+
+                var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var principal = new ClaimsPrincipal(identity);
+                var props = new AuthenticationProperties();
+
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, props);
+                return Ok(User);
+            }
+            else
+            {
+                return RedirectToPage("/Auth/Register");
+            }
+        } 
+         
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            return RedirectToAction("Index");
         }
     }
 }

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Ryzhanovskiy.University.Tinder.Core;
 using Ryzhanovskyi.University.Tinder.Core.Interfaces;
@@ -28,8 +29,13 @@ services.AddDbContext<DataContext>(options =>
     googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
 });*/
 
-services.AddAuthentication(options =>
-    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme);
+services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Auth/Login";
+        options.Cookie.Name = "AshProgHelpCookie";
+
+    });
 
 
 services.AddIdentity<User, IdentityRole>(
@@ -76,6 +82,8 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseCookiePolicy();
 
 app.MapRazorPages();
 app.MapControllers();
