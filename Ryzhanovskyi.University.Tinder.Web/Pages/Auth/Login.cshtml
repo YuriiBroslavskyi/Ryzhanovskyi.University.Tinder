@@ -2,6 +2,9 @@
 @using Ryzhanovskyi.University.Tinder.Models.Auth
 @model Ryzhanovskyi.University.Tinder.Web.Pages.Auth.LoginModel
 
+<meta name="google-signin-client_id" content="460055857959-jo5beonip1crjebins8rtbus4796flua.apps.googleusercontent.com">
+    
+
 @{
     ViewData["Title"] = "Login";
 }
@@ -30,6 +33,7 @@
                     <a href="Register" class="text-decoration-none">Don't have an account?</a>
                     <input type="submit" value="Login" class="btn btn-primary" />
                 </div>
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
             </form>
         </div>
     </div>  
@@ -40,4 +44,3 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
-
