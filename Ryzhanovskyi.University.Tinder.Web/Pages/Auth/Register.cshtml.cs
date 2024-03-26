@@ -28,11 +28,11 @@ namespace Ryzhanovskyi.University.Tinder.Web.Pages.Auth
 
                 if (result != null)
                 {
-                    return RedirectToPage("/ProfileCreation/ProfileCreation");
+                    return RedirectToPage("/ProfileCreation/CreationProfile");
                 }
                 else
                 {
-                    return BadRequest("/Error");
+                    return BadRequest("Try antoher mail");
                 }
             }
 

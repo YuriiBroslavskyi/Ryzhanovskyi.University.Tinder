@@ -5,6 +5,7 @@ using Ryzhanovskyi.University.Tinder.Models.Models;
 using System.Threading.Tasks;
 using Ryzhanovskyi.University.Tinder.Core.Interfaces;
 using Ryzhanovskyi.University.Tinder.Core.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Ryzhanovskyi.University.Tinder.Web.Controllers
 {
@@ -12,44 +13,44 @@ namespace Ryzhanovskyi.University.Tinder.Web.Controllers
     [Route("api/[controller]")]
     [Produces("application/json")]
 
+
     public class ProfileCreationController : ControllerBase
     {
         private readonly IProfileService _profileservice;
 
-        public ProfileCreationController(IProfileService profileService)
+        public ProfileCreationController(IProfileService profileservice)
         {
-            _profileservice = profileService;
+            _profileservice = profileservice;
         }
 
-        [HttpPost("ProfileCreation")]
+        [HttpPost("CreateProfile/{Id}")]
+
         public async Task<IActionResult> CreateProfile(ProfileRequestDto request)
         {
-            var profile = await _profileservice.CreateProfile(request);
+            if (ModelState.IsValid)
+            {
+                var result = await _profileservice.CreateProfile(request);
 
-            if (profile == null)
-            {
-                return RedirectToAction("Register", "Auth");
+                if (result != null)
+                {
+                    return Ok(result);
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Failed to create profile. Please check your input data.");
+                    return BadRequest(ModelState);
+                }
             }
-
-            if (request.Gender != "Male" && request.Gender != "Female")
+            else
             {
-                return BadRequest("Choose Male or Female.");
-            }
-            if (request.Age < 18)
-            {
-                return BadRequest("Your age must be at least 18.");
-            }
-            try
-            {
-                return Ok(profile);
-            }
-            catch (DbUpdateException)
-            {
-                return BadRequest("An error occurred while updating the profile.");
+                return BadRequest(ModelState);
             }
         }
 
+
         [HttpGet("Account/{Id}")]
+        [Authorize]
+
         public async Task<ActionResult<User>> GetAccountDetails(string Id)  
         {
             var user = await _profileservice.GetUserDetails(Id);

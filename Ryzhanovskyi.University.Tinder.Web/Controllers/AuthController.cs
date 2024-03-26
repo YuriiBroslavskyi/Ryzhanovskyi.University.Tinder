@@ -7,23 +7,26 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace Ryzhanovskyi.University.Tinder.Web.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    [Produces("application/json")]
+    [Route("api/[controller]")]
+   
 
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _authService;
-
+        
         public AuthController(IAuthService authService)
         {
             _authService = authService;
         }
 
-        [HttpPost("Register")]
+        [HttpPost("register")]
+        [AllowAnonymous]
         public async Task<ActionResult<User>> Register(UserRequestDto request)
         {
             var user = await _authService.RegisterAsync(request);
@@ -33,38 +36,43 @@ namespace Ryzhanovskyi.University.Tinder.Web.Controllers
                 return BadRequest("Email is already registered.");
             }
 
-            return Ok(user);
+            await AuthenticateAsync(user);
+            return RedirectToAction("Index");
         }
-        [HttpPost("Login")]
-        public async Task<IActionResult> Login(UserRequestLogDto request)
+        [HttpPost("login")]
+        [AllowAnonymous]
+        public async Task<ActionResult<User>> Login(UserRequestLogDto request)
         {
-            var User = await _authService.LoginAsync(request);
+            var user = await _authService.LoginAsync(request);
 
-            if (User != null) {
+            if (user != null) {
 
-                var claims = new List<Claim>
-                {
-                new Claim(ClaimTypes.Name, User.UserName)
-                };
-
-                var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                var principal = new ClaimsPrincipal(identity);
-                var props = new AuthenticationProperties();
-
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, props);
-                return Ok(User);
+                await AuthenticateAsync(user);
+                return Ok(user);
             }
             else
             {
                 return RedirectToPage("/Auth/Register");
             }
-        } 
-         
-        [HttpPost]
-        public async Task<IActionResult> Logout()
+        }
+        public async Task AuthenticateAsync(User user)
         {
-            await HttpContext.SignOutAsync();
-            return RedirectToAction("Index");
+            var claims = new List<Claim>
+                {
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+            };
+
+            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var principal = new ClaimsPrincipal(identity);
+            var props = new AuthenticationProperties();
+
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, props);
+        }
+
+        public  async Task<IActionResult> LogoutAsync()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToPage(".../Index");
         }
     }
 }

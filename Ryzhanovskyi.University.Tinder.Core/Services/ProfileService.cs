@@ -43,7 +43,6 @@ namespace Ryzhanovskyi.University.Tinder.Core.Services
             }
 
             profile.Age = request.Age;
-
             profile.City = request.City;
             profile.Description = request.Description;
             profile.Photo = request.Photo;

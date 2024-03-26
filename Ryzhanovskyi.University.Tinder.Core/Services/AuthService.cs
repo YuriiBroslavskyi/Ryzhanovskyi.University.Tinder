@@ -1,4 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Ryzhanovskyi.University.Tinder.Core.Interfaces;
 using Ryzhanovskyi.University.Tinder.Models.Auth;
 using Ryzhanovskyi.University.Tinder.Models.Models;
@@ -7,8 +11,11 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace Ryzhanovskyi.University.Tinder.Core.Services
 {
@@ -16,11 +23,14 @@ namespace Ryzhanovskyi.University.Tinder.Core.Services
     {
         private readonly DataContext _context;
         private readonly IEmailSender _emailSender;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public AuthService(DataContext context, IEmailSender emailSender)
+
+        public AuthService(DataContext context, IEmailSender emailSender, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
             _emailSender = emailSender;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<User> RegisterAsync(UserRequestDto request)
@@ -47,7 +57,7 @@ namespace Ryzhanovskyi.University.Tinder.Core.Services
             };
             await _emailSender.SendEmailAsync(welcomeEmail.Email, welcomeEmail.Subject, welcomeEmail.Message);
 
-            _context.Users.Add(user);
+            await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
 
             return user; 
@@ -55,19 +65,26 @@ namespace Ryzhanovskyi.University.Tinder.Core.Services
 
         public async Task<User> LoginAsync(UserRequestLogDto request)
         {
-            var User = await _context.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
 
-            if (User == null)
+            if (user == null)
             {
                 throw new SyntaxErrorException("User not found.");
             }
 
-            if (!BCrypt.Net.BCrypt.Verify(request.Password, User.PasswordHash))
+            if (!BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
             {
                 throw new SyntaxErrorException("Incorrect password.");
             }
-
-            return User;
+            return user;
         }
+
+        public async Task<IActionResult> LogoutAsync()
+        {
+            await _httpContextAccessor.HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return new OkObjectResult("Logged out successfully.");
+
+        }
+
     }
 }

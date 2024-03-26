@@ -1,4 +1,5 @@
-﻿using Ryzhanovskyi.University.Tinder.Models.Auth;
+﻿using Microsoft.AspNetCore.Mvc;
+using Ryzhanovskyi.University.Tinder.Models.Auth;
 using Ryzhanovskyi.University.Tinder.Models.Models;
 using System;
 using System.Collections.Generic;
@@ -12,5 +13,7 @@ namespace Ryzhanovskyi.University.Tinder.Core.Interfaces
     {
         Task<User> RegisterAsync(UserRequestDto request);
         Task<User> LoginAsync(UserRequestLogDto request);
+
+        Task<IActionResult> LogoutAsync();
     }
 }

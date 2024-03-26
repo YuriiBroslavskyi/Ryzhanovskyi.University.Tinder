@@ -2,39 +2,26 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Ryzhanovskyi.University.Tinder.Core.Interfaces;
 using Ryzhanovskyi.University.Tinder.Models.Models;
+using Ryzhanovskyi.University.Tinder.Web.Data;
 using System.Threading.Tasks;
 
-namespace Ryzhanovskyi.University.Tinder.Web.Pages.Profile
+namespace Ryzhanovskyi.University.Tinder.Web.Pages
 {
-    public class AccountModel : PageModel
+    public class UserProfileModel : PageModel
     {
-        private readonly IProfileService _profileCreation;
+        private readonly DataContext _context;
 
-        public AccountModel(IProfileService profileCreation)
+        public UserProfileModel(DataContext context)
         {
-            _profileCreation = profileCreation;
+            _context = context;
         }
 
-        [BindProperty]
-        public ProfileRequestDto ProfileRequest { get; set; }
-        public User User { get; private set; }
+        public List<User> Users { get; set; }
 
-        public async Task<IActionResult> OnGetAsync()
+        public void OnGet()
         {
-            if (User != null)
-            {
-                User = await _profileCreation.GetUserDetails(User.Id);
-
-                if (User != null)
-                {
-                    return RedirectToPage("/ProfileCreation/Account", new { Id = User.Id });
-                }
-                else
-                {
-                    return NotFound("User not found");
-                }
-            }
-            return Page();
+            Users = _context.Users.ToList();
         }
     }
 }
+
