@@ -17,17 +17,17 @@ Add your project documentation here.
 Add your task decomposition here.
 
 ### Week 1:
-- Implement feature: User Registration with Google OAuth 2.0
+- Implement feature: User Registration with Google OAuth 2.0 ✔️
 - Set up Github repository ✔️
 - Configure welcome email after successful registration ✔️
-- Configure Continuous Integration/Continuous Delivery pipeline ✔️
+- Configure Continuous Integration/Continuous Delivery pipeline 
 - Create initial project structure ✔️
-- Define database schema and models ✔️
+- Define database schema and models 
 
 ### Week 2:
-- Implement feature: Profile Creation ✔️
+- Implement feature: Profile Creation 
 - Design user interface wireframes
 - Set up basic authentication and authorization middleware
-- Create user profile database functionality ✔️
+- Create user profile database functionality 
 - Begin frontend development for profile creation page
 
