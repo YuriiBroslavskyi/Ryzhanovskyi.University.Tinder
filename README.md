@@ -22,7 +22,7 @@ Add your task decomposition here.
 - Configure welcome email after successful registration ✔️
 - Configure Continuous Integration/Continuous Delivery pipeline 
 - Create initial project structure ✔️
-- Define database schema and models 
+- Define database schema and models ✔️
 
 ### Week 2:
 - Implement feature: Profile Creation 
