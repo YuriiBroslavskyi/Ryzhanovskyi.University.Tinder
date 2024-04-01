@@ -25,9 +25,9 @@ Add your task decomposition here.
 - Define database schema and models ✔️
 
 ### Week 2:
-- Implement feature: Profile Creation 
+- Implement feature: Profile Creation ✔️
 - Design user interface wireframes
-- Set up basic authentication and authorization middleware
-- Create user profile database functionality 
-- Begin frontend development for profile creation page
+- Set up basic authentication and authorization middleware 
+- Create user profile database functionality ✔️
+- Begin frontend development for profile creation page ✔️
 
