@@ -57,6 +57,15 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
+# Email Configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'gnomelovesender@outlook.com'  
+EMAIL_HOST_PASSWORD = 'gnomeLove228!'  
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -73,7 +82,7 @@ ROOT_URLCONF = 'TinderClone.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -150,5 +159,5 @@ AUTHENTICATION_BACKENDS = {
     "allauth.account.auth_backends.AuthenticationBackend"
 }
 
-LOGIN_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL =  "../users/templates/ProfileCreation.html"
 LOGOUT_REDIRECT_URL = "/"

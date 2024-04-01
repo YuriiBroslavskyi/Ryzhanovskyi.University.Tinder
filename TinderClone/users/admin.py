@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CustomUser
+from .models.models import CustomUser 
 
 # Register your models here.
 

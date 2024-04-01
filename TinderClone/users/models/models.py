@@ -1,8 +1,12 @@
 from django.contrib.auth.models import AbstractUser
 from .choices import STATUS_CHOICES, HOBBY_CHOICES, GENDER_CHOICES
 from django.db import models
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 class CustomUser(AbstractUser):
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
     email = models.EmailField(unique=True)
     status = models.CharField(max_length=100, choices=STATUS_CHOICES, default='regular')
     hobby = models.CharField(max_length=200, choices=HOBBY_CHOICES)
@@ -28,5 +32,12 @@ class CustomUser(AbstractUser):
         help_text='Specific permissions for this user.',
     )
 
+    def save(self, *args, **kwargs):
+        # Your custom save logic here
+        super().save(*args, **kwargs)
+
+    
     def __str__(self):
         return self.username
+    
+
