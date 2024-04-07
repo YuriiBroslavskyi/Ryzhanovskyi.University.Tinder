@@ -19,7 +19,7 @@
     <div class="container">
         {% load socialaccount %}
         <h2>Google Login</h2>
-        <form id="google-login-form" action="{% provider_login_url 'google' %}?next=/" method="post">
+        <form id="google-login-form" action="{% provider_login_url 'google' %}?next=/redirect_after_login" method="post">
             {% csrf_token %}
             <button class="gsi-material-button" type="button" onclick="signInWithGoogle()">
                 <div class="gsi-material-button-state"></div>

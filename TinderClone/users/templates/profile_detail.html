@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
+    <title>Profile Detail</title>
+</head>
+<body>
+    {% include 'layout.html' %}
+    <h2>Profile Detail</h2>
+    {% if user.is_authenticated %}
+        {% with profile=user.profile %}
+            <div class="profile-container">
+                <p><strong>Username:</strong> {{ profile.user.username }}</p>
+                <p><strong>Email:</strong> {{ profile.user.email }}</p>
+                <p><strong>First name:</strong> {{ profile.user.first_name }}</p>
+                <p><strong>Last name:</strong> {{ profile.user.last_name }}</p>
+                <p><strong>City:</strong> {{ profile.city }}</p>
+                <p><strong>Age:</strong> {{ profile.age }}</p>
+                <p><strong>Description:</strong> {{ profile.description }}</p>
+                <p><strong>Verified:</strong> <span class="{% if profile.verified %}verified-badge{% else %}unverified-badge{% endif %}">{% if profile.verified %}Yes{% else %}No{% endif %}</span></p>
+                {% if profile.photo %}
+                <img src="{{ profile.photo.url }}" alt="Profile Photo" class="profile-photo">
+                {% else %}
+                <p>No photo available</p>
+                {% endif %}
+            </div>
+        {% endwith %}
+    {% endif %}
+</body>
+</html>

@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,7 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-SITE_ID=0
+SITE_ID=1
 
 # Application definition
 
@@ -40,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
-    'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -145,13 +145,17 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "users/static/css"
+    BASE_DIR / "users/static/css",
 ]
 
 AUTHENTICATION_BACKENDS = {
@@ -159,5 +163,7 @@ AUTHENTICATION_BACKENDS = {
     "allauth.account.auth_backends.AuthenticationBackend"
 }
 
-LOGIN_REDIRECT_URL =  "../users/templates/ProfileCreation.html"
+AUTH_USER_MODEL = "users.User"
+
+LOGIN_REDIRECT_URL =  "/"
 LOGOUT_REDIRECT_URL = "/"

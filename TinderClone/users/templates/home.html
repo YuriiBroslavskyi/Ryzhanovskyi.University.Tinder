@@ -1,1 +1,18 @@
- 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    <title>Gnome Love</title>
+
+{% include 'layout.html' %}
+
+<div class="home-container">
+    {% if user.is_authenticated %}
+        <p>You are signed in as {{ user.email }}</p>
+    {% else %}
+        <p>You are not signed in. Please sign in or register.</p>
+        <a href="{% url 'googleLogin' %}" class="login-btn" 
+        style="background-color: pink; color: white; padding: 10px 30px; border-radius: 20px; text-decoration: none;">
+        Login</a>
+    {% endif %}
+</div>
