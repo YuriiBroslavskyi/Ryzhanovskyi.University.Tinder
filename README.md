@@ -8,12 +8,12 @@ midzkage@gmail.com
 https://t.me/muchailoliluzivert
 
 ## Getting Started
-To start project in the terminal firtst you need to activate virtual enviroment:
-.\projectVenv\Scripts\activate
-then go to the project folder:
-cd .\TinderClone\
-and run the server:
-python manage.py runserver
+- To start project in the terminal firtst you need to activate virtual enviroment:
+- .\projectVenv\Scripts\activate
+- then go to the project folder:
+- cd .\TinderClone\
+- and run the server:
+- python manage.py runserver
 
 ## Project Documentation
 Add your project documentation here.
