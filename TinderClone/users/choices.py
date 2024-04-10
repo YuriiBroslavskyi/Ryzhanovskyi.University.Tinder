@@ -45,7 +45,12 @@ HOBBY_CHOICES = [
     ]
 
 GENDER_CHOICES = [
-    ('M', 'Male'),
-    ('F', 'Female'),
+    ('Male', 'Male'),
+    ('Female', 'Female'),
     ('O', 'Other'),
+    ]
+GENDER_MATCH_CHOICES = [
+    ('Male', 'Male'),
+    ('Female', 'Female'),
+    ('Both', 'M/F'),
     ]

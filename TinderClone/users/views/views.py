@@ -1,8 +1,7 @@
-from sqlite3 import IntegrityError
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout
-from .forms import ProfileForm
-from .models import Profile
+from users.forms import ProfileForm
+from users.models import Profile
 from django.contrib.auth.decorators import login_required, permission_required
 
 def home(request):
@@ -21,6 +20,7 @@ def create_profile(request):
             profile = form.save(commit=False)
             profile.user = request.user 
             profile.save()
+            form.save_m2m()
             return redirect('profile_detail')  
     else:
         form = ProfileForm()

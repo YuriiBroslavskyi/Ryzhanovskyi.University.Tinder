@@ -1,11 +1,9 @@
-/* Body styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
 }
 
-/* Container styles */
 .container {
     max-width: 600px;
     margin: 0 auto;
@@ -28,13 +26,12 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* Label styles */
 label {
     display: block;
     font-weight: bold;
+    margin-top: 17px;
 }
 
-/* Input and select styles */
 input[type="text"],
 select {
     width: 100%;
@@ -43,7 +40,6 @@ select {
     border-radius: 5px;
 }
 
-/* Textarea styles */
 textarea {
     width: 100%;
     padding: 10px;
@@ -51,12 +47,10 @@ textarea {
     border-radius: 5px;
 }
 
-/* Multi-select tag container styles */
 .hobby-container {
     margin-bottom: 20px;
 }
 
-/* Multi-select tag styles */
 .multi-select-tag-container {
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -71,7 +65,6 @@ textarea {
     border-radius: 5px;
 }
 
-/* File input styles */
 input[type="file"] {
     width: 100%;
     padding: 10px;
@@ -90,3 +83,49 @@ button {
 button:hover {
     background-color: pink;
 }
+
+.error-message {
+    color: rgb(182, 74, 74);
+    font-style: italic;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.age-container {
+    display: flex;
+    margin-bottom: 10px;
+    text-align: justify;
+    padding: 0px;
+    flex-direction: row;
+}
+/* #id_first_name.custom-input{
+}
+#id_last_name.custom-input{
+}
+#id_photo.custom-input{
+}
+#id_gender.custom-input{
+}
+#id_match_gender.custom-input{
+}
+#id_city.custom-input{
+} */
+#id_date_of_birth.custom-input{
+    width: 30px;
+    height: 15px;
+    margin-top: 15px;
+    margin-left: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    height: 19px;
+    width: 100px;
+    position: relative;
+    display: inline-block;
+    left: 0;
+    top: 0;
+}
+/* #id_description.custom-input{
+}
+ */
+

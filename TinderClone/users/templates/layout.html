@@ -24,10 +24,10 @@
                 </li>
                 <li class="list">
                     {% if user.is_authenticated %}
-                    <a href="#" class="link">Match</a>        
+                    <a href="{% url 'card' %}" class="link">Match</a>        
                 </li>
                 <li class="list">
-                    <a href="profile" class="link">Prof</a>
+                    <a href="{% url 'profile_detail' %}" class="link">Prof</a>
                 </li>
                 <li class="list">
                     <a href="{% url 'logout' %}" class="link">Logout</a>
@@ -36,10 +36,5 @@
             </ul>
         </nav>
     </header>
-    <footer>
-        <div class="footer-container">
-            <p>&copy; 2024 GnomeLove. All rights reserved.</p>
-        </div>
-    </footer>
 </body>
 </html>
