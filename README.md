@@ -37,16 +37,16 @@ Add your task decomposition here.
 - Begin frontend development for profile creation page ✔️
 
 ### Week 3:
-- Implement feature: Swipe Functionality
-- Develop backend logic for swipe actions
-- Implement swipe gestures in frontend
+- Implement feature: Swipe Functionality ✔️
+- Develop backend logic for swipe actions ✔️
+- Implement swipe gestures in frontend 
 - Test swipe functionality with mock data
 - Refine swipe algorithm for better user experience
 
 ### Week 4:
-- Implement feature: Matching Algorithm
-- Develop backend algorithms for match suggestions
-- Integrate matching algorithm with frontend UI
+- Implement feature: Matching Algorithm ✔️
+- Develop backend algorithms for match suggestions ✔️
+- Integrate matching algorithm with frontend UI ✔️
 - Test matching algorithm with sample data
 - Fine-tune algorithm parameters for accuracy
 
