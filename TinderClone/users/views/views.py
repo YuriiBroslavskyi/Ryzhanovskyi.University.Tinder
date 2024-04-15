@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout
+from users.views.send_mail import send_logging_in_mail, send_created_page_mail
 from users.forms import ProfileForm
 from users.models import Profile
 from django.contrib.auth.decorators import login_required, permission_required
@@ -13,6 +14,7 @@ def navbar(request):
 def googleLogin(request):
     return render(request, "googleLogin.html")
 
+@login_required
 def create_profile(request):
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES)
@@ -21,6 +23,7 @@ def create_profile(request):
             profile.user = request.user 
             profile.save()
             form.save_m2m()
+            send_created_page_mail(request.user)
             return redirect('profile_detail')  
     else:
         form = ProfileForm()
@@ -29,7 +32,8 @@ def create_profile(request):
 @login_required
 def redirect_after_login(request):
     try:
-        profile = request.user.profile 
+        profile = request.user.profile
+        send_logging_in_mail(request.user)
         return redirect('profile_detail')  
     except Profile.DoesNotExist:
         return redirect('profile_creation')
