@@ -25,7 +25,6 @@ Add your task decomposition here.
 - Implement feature: User Registration with Google OAuth 2.0 ✔️
 - Set up Github repository ✔️
 - Configure welcome email after successful registration 
-- Configure Continuous Integration/Continuous Delivery pipeline 
 - Create initial project structure ✔️
 - Define database schema and models ✔️
 
@@ -65,10 +64,10 @@ Add your task decomposition here.
 - Test premium features with mock subscriptions
 
 ### Week 7:
-- Implement feature: Email Notification
-- Set up email service integration
-- Develop backend logic for sending welcome emails
-- Test email notification system
+- Implement feature: Email Notification ✔️
+- Set up email service integration ✔️
+- Develop backend logic for sending welcome emails ✔️
+- Test email notification system ✔️
 - Handle email verification and user opt-in settings
 
 ### Week 8:
