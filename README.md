@@ -64,10 +64,10 @@ Add your task decomposition here.
 - Test premium features with mock subscriptions
 
 ### Week 7:
-- Implement feature: Email Notification
-- Set up email service integration
-- Develop backend logic for sending welcome emails
-- Test email notification system
+- Implement feature: Email Notification ✔️
+- Set up email service integration ✔️
+- Develop backend logic for sending welcome emails ✔️
+- Test email notification system ✔️
 - Handle email verification and user opt-in settings
 
 ### Week 8:
