@@ -68,7 +68,7 @@ Add your task decomposition here.
 - Set up email service integration ✔️
 - Develop backend logic for sending welcome emails ✔️
 - Test email notification system ✔️
-- Handle email verification and user opt-in settings
+- Handle email verification and user opt-in settings ✔️
 
 ### Week 8:
 - Implement feature: Privacy and Security Enhancements
