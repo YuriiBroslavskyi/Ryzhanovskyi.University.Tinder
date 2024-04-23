@@ -73,9 +73,8 @@ Add your task decomposition here.
 ### Week 8:
 - Implement feature: Privacy and Security Enhancements
 - Review and implement security best practices
-
-- Enhance user data encryption and protection measures
-- Implement user privacy settings
+- Enhance user data encryption and protection measures ✔️
+- Implement user privacy settings 
 - Perform security testing and audits
 
 ### Week 9:
