@@ -27,7 +27,7 @@
                     <a href="{% url 'card' %}" class="link">Match</a>        
                 </li>
                 <li class="list">
-                    <a href="{% url 'profile_detail' %}" class="link">Prof</a>
+                    <a href="{% url 'profile_detail' username=user.username %}" class="link">Prof</a>
                 </li>
                 <li class="list">
                     <a href="{% url 'logout' %}" class="link">Logout</a>

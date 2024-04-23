@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from users.models import Profile
+from users.models import Profile, ProfileLike
 from django.shortcuts import render, redirect
 import random
 

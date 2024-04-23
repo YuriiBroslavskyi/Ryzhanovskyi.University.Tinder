@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import logout
 from users.views.send_mail import send_logging_in_mail, send_created_page_mail
 from users.forms import ProfileForm
@@ -39,9 +39,12 @@ def redirect_after_login(request):
         return redirect('profile_creation')
 
 @login_required
-def profile_detail(request):
-    return render(request, "profile_detail.html")
-
+def profile_detail(request, username):
+    profile = get_object_or_404(Profile, user__username=username)
+    context = {
+        'profile': profile,
+    }
+    return render(request, "profile_detail.html", context)
 @login_required
 def logout_view(request):
     logout(request)

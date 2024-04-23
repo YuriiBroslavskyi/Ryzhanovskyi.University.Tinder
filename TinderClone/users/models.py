@@ -40,7 +40,7 @@ class Profile(models.Model):
 
     def get_dislikes_count(self):
         return self.user.disliked_by_users.count()
-
+    
 class ProfileLike(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='liked_users')
     liked_profile = models.ForeignKey(User, on_delete=models.CASCADE, related_name='liked_by_users')
