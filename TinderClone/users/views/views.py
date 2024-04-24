@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 from django.contrib.auth import logout
 from users.views.send_mail import send_logging_in_mail, send_created_page_mail
 from users.forms import ProfileForm
@@ -24,7 +25,9 @@ def create_profile(request):
             profile.save()
             form.save_m2m()
             send_created_page_mail(request.user)
-            return redirect('profile_detail')  
+            
+            profile_url = reverse('profile_detail', kwargs={'username': request.user.username})
+            return redirect(profile_url)
     else:
         form = ProfileForm()
     return render(request, 'ProfileCreation.html', {'form': form})
@@ -34,7 +37,12 @@ def redirect_after_login(request):
     try:
         profile = request.user.profile
         send_logging_in_mail(request.user)
-        return redirect('profile_detail')  
+        
+        # Construct the URL using reverse and pass the username as a keyword argument
+        profile_url = reverse('profile_detail', kwargs={'username': request.user.username})
+        
+        return redirect(profile_url)
+        
     except Profile.DoesNotExist:
         return redirect('profile_creation')
 

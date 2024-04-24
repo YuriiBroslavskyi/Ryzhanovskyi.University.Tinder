@@ -18,6 +18,7 @@ urlpatterns = [
     path('next-profile/', match_views.card_views, name='next_profile'),
     path('redirect_after_login/', views.redirect_after_login, name='redirect_after_login'),
     path('like/<str:username>/', like_views.like_profile, name='like_profile'),
+    path('dislike/<str:username>/', like_views.dislike_profile, name='dislike_profile'),
 ]
 
 if settings.DEBUG:

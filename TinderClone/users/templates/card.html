@@ -16,7 +16,7 @@
         {% if profile.photo %}
         <img src="{{ profile.photo.url }}" alt="Profile Photo" class="profile-photo">
         {% else %}
-        <p>No photo available</p>
+        <img src="{% static 'images/no_photo.png' %}" alt="Profile Photo" class="profile-photo">
         {% endif %}
         <p><strong>First name:</strong> {{ profile.first_name }}</p>
         <p><strong>Last name:</strong> {{ profile.last_name }}</p>
@@ -55,6 +55,7 @@
         });
 
         document.getElementById("hate").addEventListener("click", function() {
+            fetch("/dislike/{{ profile.user.username }}/")
             fetch("/next-profile/")
             .then(response => response.json())
             .then(data => {

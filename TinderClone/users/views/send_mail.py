@@ -24,3 +24,9 @@ def send_created_page_mail(user):
     message = f"Hello {user.first_name},\n\nYou complete registarion with creating up your profile, good luck at finding ur love *_*\n\nThank you for logging in."
     to_email = user.email
     send_mail(subject, message, from_email, [to_email], fail_silently=False)
+
+def send_liked_message(user):
+    subject = "Greetings!"
+    message = f"Hello {user.first_name},\n\nSomeone is liked you.\nGo and check it!"
+    to_email = user.email
+    send_mail(subject, message, from_email, [to_email], fail_silently=False)

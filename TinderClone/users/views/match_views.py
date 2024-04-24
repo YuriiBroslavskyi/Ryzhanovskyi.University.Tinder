@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from users.models import Profile, ProfileLike
+from users.models import Profile, ProfileLike, ProfileDislike
 from django.shortcuts import render, redirect
 import random
 
@@ -17,15 +17,18 @@ def match_algorithm(user):
 
     # Get profiles that the user has not liked
     liked_profiles = ProfileLike.objects.filter(user=user).values_list('liked_profile', flat=True)
+    disliked_profiles = ProfileDislike.objects.filter(user=user).values_list('disliked_profile', flat=True)
+
+    liked_or_disliked_profiles = liked_profiles.union(disliked_profiles)
 
     if match_gender == 'Both':
-        matched_profiles = other_profiles.exclude(user__in=liked_profiles)
+        matched_profiles = other_profiles.exclude(user__in=liked_or_disliked_profiles)
     elif match_gender == 'Male':
-        matched_profiles = other_profiles.filter(gender='Male').exclude(user__in=liked_profiles)
+        matched_profiles = other_profiles.filter(gender='Male').exclude(user__in=liked_or_disliked_profiles)
     elif match_gender == 'Female':
-        matched_profiles = other_profiles.filter(gender='Female').exclude(user__in=liked_profiles)
+        matched_profiles = other_profiles.filter(gender='Female').exclude(user__in=liked_or_disliked_profiles)
     else:
-        matched_profiles = other_profiles.filter(gender=match_gender).exclude(user__in=liked_profiles)
+        matched_profiles = other_profiles.filter(gender=match_gender).exclude(user__in=liked_or_disliked_profiles)
 
     matched_profiles = list(matched_profiles)
     random.shuffle(matched_profiles)
