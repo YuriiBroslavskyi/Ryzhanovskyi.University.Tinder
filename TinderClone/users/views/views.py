@@ -42,9 +42,15 @@ def redirect_after_login(request):
 def profile_detail(request, username):
     profile = get_object_or_404(Profile, user__username=username)
     context = {
-        'profile': profile,
+        'first_name': profile.first_name,
+        'last_name': profile.last_name,
+        'date_of_birth': profile.date_of_birth,
+        'gender': profile.gender,
+        'city': profile.city,
+        'description': profile.description
     }
     return render(request, "profile_detail.html", context)
+
 @login_required
 def logout_view(request):
     logout(request)

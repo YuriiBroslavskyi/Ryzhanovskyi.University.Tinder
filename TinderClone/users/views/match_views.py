@@ -11,20 +11,21 @@ def create_random_profile_from_database(user):
 
 def match_algorithm(user):
     user_profile = user.profile
-    user_gender = user_profile.gender
     match_gender = user_profile.match_gender
 
     other_profiles = Profile.objects.exclude(user=user)
 
+    # Get profiles that the user has not liked
+    liked_profiles = ProfileLike.objects.filter(user=user).values_list('liked_profile', flat=True)
+
     if match_gender == 'Both':
-        if match_gender == 'Male':
-            matched_profiles = other_profiles.filter(gender='Male')
-        elif match_gender == 'Female':
-            matched_profiles = other_profiles.filter(gender='Female')
-        else:
-            matched_profiles = other_profiles
+        matched_profiles = other_profiles.exclude(user__in=liked_profiles)
+    elif match_gender == 'Male':
+        matched_profiles = other_profiles.filter(gender='Male').exclude(user__in=liked_profiles)
+    elif match_gender == 'Female':
+        matched_profiles = other_profiles.filter(gender='Female').exclude(user__in=liked_profiles)
     else:
-        matched_profiles = other_profiles.filter(gender=match_gender)
+        matched_profiles = other_profiles.filter(gender=match_gender).exclude(user__in=liked_profiles)
 
     matched_profiles = list(matched_profiles)
     random.shuffle(matched_profiles)

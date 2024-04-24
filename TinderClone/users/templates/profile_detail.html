@@ -37,7 +37,9 @@
                         {% if not forloop.last %}, {% endif %}
                     {% endfor %}
                 </p>
-                                <!-- <p><strong>Verified:</strong> <span class="{% if profile.verified %}verified-badge{% else %}unverified-badge{% endif %}">{% if profile.verified %}Yes{% else %}No{% endif %}</span></p> -->
+            </div>
+            <div>
+                <button class="submit">Settings</button>
             </div>
         {% endwith %}
     {% endif %}
