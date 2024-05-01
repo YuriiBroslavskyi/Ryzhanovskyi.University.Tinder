@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from .choices import STATUS_CHOICES, HOBBY_CHOICES, GENDER_CHOICES, GENDER_MATCH_CHOICES
+from .choices import STATUS_CHOICES, HOBBY_CHOICES, GENDER_CHOICES, GENDER_MATCH_CHOICES, YOUR_CHOICES
 
 class User(AbstractUser):
     email = models.EmailField(unique=True)
@@ -30,6 +30,7 @@ class Profile(models.Model):
     city = models.CharField(max_length=100, blank=True)
     date_of_birth = models.DateField(blank=True, null=True)
     description = models.TextField(blank=True)
+    preferences = models.CharField(max_length=100, choices=YOUR_CHOICES, default='byGender')  # Change YOUR_CHOICES to your actual choices
     verified = models.BooleanField(default=False)
 
     def __str__(self):

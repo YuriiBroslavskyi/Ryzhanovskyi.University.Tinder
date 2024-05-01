@@ -38,7 +38,6 @@ def redirect_after_login(request):
         profile = request.user.profile
         send_logging_in_mail(request.user)
         
-        # Construct the URL using reverse and pass the username as a keyword argument
         profile_url = reverse('profile_detail', kwargs={'username': request.user.username})
         
         return redirect(profile_url)

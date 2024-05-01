@@ -54,3 +54,10 @@ GENDER_MATCH_CHOICES = [
     ('Female', 'Female'),
     ('Both', 'M/F'),
     ]
+
+YOUR_CHOICES = [
+    ("byGender", "ByGender"),
+    ("byAge", "ByAge"),
+    ("byHobby", "ByHobby")
+
+]

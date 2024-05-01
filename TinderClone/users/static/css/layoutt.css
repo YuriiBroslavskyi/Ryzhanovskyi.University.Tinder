@@ -40,5 +40,8 @@ header {
     font-weight: bold;
 }
 
+.link:hover {
+    color: #ff69b4;  /* Рожевий колір */
+}
 
 
