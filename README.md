@@ -78,10 +78,10 @@ Add your task decomposition here.
 - Perform security testing and audits
 
 ### Week 9:
-- Implement feature: Customizable Preferences
-- Develop UI for adjusting match preferences
-- Implement backend logic for updating user preferences
-- Test preference customization with various scenarios
+- Implement feature: Customizable Preferences ✔️
+- Develop UI for adjusting match preferences ✔️
+- Implement backend logic for updating user preferences ✔️
+- Test preference customization with various scenarios ✔️
 - Optimize preference settings for performance
 
 ### Week 10:
