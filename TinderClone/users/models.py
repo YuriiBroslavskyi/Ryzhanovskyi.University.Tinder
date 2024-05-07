@@ -30,7 +30,7 @@ class Profile(models.Model):
     city = models.CharField(max_length=100, blank=True)
     date_of_birth = models.DateField(blank=True, null=True)
     description = models.TextField(blank=True)
-    preferences = models.CharField(max_length=100, choices=YOUR_CHOICES, default='byGender')  # Change YOUR_CHOICES to your actual choices
+    preferences = models.CharField(max_length=100, choices=YOUR_CHOICES, default='byGender') 
     verified = models.BooleanField(default=False)
 
     def __str__(self):

@@ -59,5 +59,4 @@ YOUR_CHOICES = [
     ("byGender", "ByGender"),
     ("byAge", "ByAge"),
     ("byHobby", "ByHobby")
-
 ]

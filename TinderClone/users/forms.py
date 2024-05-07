@@ -1,6 +1,6 @@
 from datetime import date
 from django import forms
-from .models import Profile, Hobby
+from .models import Profile
 from django.forms import ValidationError
 from django.utils.translation import gettext_lazy as _
 

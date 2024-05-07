@@ -14,6 +14,11 @@
 <body>
     <div>
         <p>Your preferences {{user.profile.preferences}}</p>
+        <p>Your hobby  {% for hobby in user.profile.hobby.all %}
+            {{ hobby.name }}
+            {% if not forloop.last %}, {% endif %}
+        {% endfor %}
+        </p>
     </div>
     <div class="profile-container">
         {% if profile.photo %}

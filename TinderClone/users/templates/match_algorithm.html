@@ -14,10 +14,10 @@
     <form id="algorithmForm" action="/match-settings/" method="post">
         {% csrf_token %}
         <label>
-            <input type="radio" name="algorithm" value="ByGender"> By Gender
+            <input type="radio" name="algorithm" value="ByGender" checked> By Gender
         </label>
         <label>
-            <input type="radio" name="algorithm" value="ByAge" checked> By Age
+            <input type="radio" name="algorithm" value="ByAge"> By Age
         </label>
         <label>
             <input type="radio" name="algorithm" value="ByHobby"> By Hobby
@@ -34,6 +34,15 @@
             >
             <br>
         </div>
+        <div id="gender_fields" style="display: none;">
+            <label for="gender">Choose Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+            <br>
+        </div>
         <button type="submit">Save Preferences</button>
     </form>
 
@@ -46,12 +55,19 @@
     <script>
         const algorithmForm = document.getElementById("algorithmForm");
         const ageFields = document.getElementById("age_fields");
+        const genderFields = document.getElementById("gender_fields");
 
         algorithmForm.addEventListener("change", function() {
-            if (document.querySelector('input[name="algorithm"]:checked').value === "ByAge") {
+            const selectedAlgorithm = document.querySelector('input[name="algorithm"]:checked').value;
+            if (selectedAlgorithm === "ByAge") {
                 ageFields.style.display = "block";
+                genderFields.style.display = "none";
+            } else if (selectedAlgorithm === "ByGender") {
+                ageFields.style.display = "none";
+                genderFields.style.display = "block";
             } else {
                 ageFields.style.display = "none";
+                genderFields.style.display = "none";
             }
         });
     </script>
