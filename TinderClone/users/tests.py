@@ -40,3 +40,4 @@ class EmailNotificationTest(TestCase):
         self.assertEqual(mail.outbox[0].subject, 'Welcome to Our Website!')
         self.assertIn('Hello Test,', mail.outbox[0].body)
         self.assertIn('You complete registarion with creating up your profile', mail.outbox[0].body)
+

@@ -30,3 +30,4 @@ def send_liked_message(user):
     message = f"Hello {user.first_name},\n\nSomeone is liked you.\nGo and check it!"
     to_email = user.email
     send_mail(subject, message, from_email, [to_email], fail_silently=False)
+    

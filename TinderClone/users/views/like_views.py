@@ -9,7 +9,6 @@ def like_profile(request, username):
     
     # Check if the user has already liked the profile
     if not ProfileLike.objects.filter(user=request.user, liked_profile=liked_user).exists():
-        # If not liked, like the profile
         like = ProfileLike(user=request.user, liked_profile=liked_user)
         like.save()
         send_liked_message(user=liked_profile.user)
@@ -23,7 +22,6 @@ def dislike_profile(request, username):
     
     # Check if the user has already disliked the profile
     if not ProfileDislike.objects.filter(user=request.user, disliked_profile=disliked_user).exists():
-        # If not disliked, dislike the profile
         dislike = ProfileDislike(user=request.user, disliked_profile=disliked_user)
         dislike.save()
 
