@@ -8,9 +8,7 @@ midzkage@gmail.com
 https://t.me/muchailoliluzivert
 
 ## Getting Started
-- To start project in the terminal firtst you need to activate virtual enviroment:
-- .\projectVenv\Scripts\activate
-- then go to the project folder:
+- To start project in the terminal firtst you to go to the project:
 - cd .\TinderClone\
 - and run the server:
 - python manage.py runserver
@@ -24,13 +22,13 @@ Add your task decomposition here.
 ### Week 1:
 - Implement feature: User Registration with Google OAuth 2.0 ✔️
 - Set up Github repository ✔️
-- Configure welcome email after successful registration 
+- Configure welcome email after successful registration ✔️
 - Create initial project structure ✔️
 - Define database schema and models ✔️
 
 ### Week 2:
 - Implement feature: Profile Creation ✔️
-- Design user interface wireframes
+- Design user interface wireframes ✔️
 - Set up basic authentication and authorization middleware ✔️
 - Create user profile database functionality ✔️
 - Begin frontend development for profile creation page ✔️
@@ -46,8 +44,8 @@ Add your task decomposition here.
 - Implement feature: Matching Algorithm ✔️
 - Develop backend algorithms for match suggestions ✔️
 - Integrate matching algorithm with frontend UI ✔️
-- Test matching algorithm with sample data
-- Fine-tune algorithm parameters for accuracy
+- Test matching algorithm with sample data ✔️
+- Fine-tune algorithm parameters for accuracy ✔️
 
 ### Week 5:
 - Implement feature: Chat Messaging
@@ -82,7 +80,7 @@ Add your task decomposition here.
 - Develop UI for adjusting match preferences ✔️
 - Implement backend logic for updating user preferences ✔️
 - Test preference customization with various scenarios ✔️
-- Optimize preference settings for performance
+- Optimize preference settings for performance ✔️
 
 ### Week 10:
 - Implement feature: Report and Block Functionality
