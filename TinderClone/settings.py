@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ['gnomelove.azurewebsites.net', '127.0.0.1', '*']
 CSRF_TRUSTED_ORIGINS = ['https://gnomelove.azurewebsites.net']
 
 
-SITE_ID=1
+SITE_ID=2
 
 # Application definition
 
@@ -147,9 +147,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_DIR = os.path.join(BASE_DIR / 'users/static/css')
-STATICFILES_DIRS = [STATIC_DIR]
-
+STATICFILES_DIRS = [
+    BASE_DIR / "users/static/css",
+]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -159,10 +159,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-STATICFILES_DIRS = [
-    BASE_DIR / "users/static/css",
-]
 
 AUTHENTICATION_BACKENDS = {
     "django.contrib.auth.backends.ModelBackend",
