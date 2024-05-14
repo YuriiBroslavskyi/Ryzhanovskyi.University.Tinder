@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ['gnomelove.azurewebsites.net', '127.0.0.1', '*']
 CSRF_TRUSTED_ORIGINS = ['https://gnomelove.azurewebsites.net']
 
 
-SITE_ID=2
+SITE_ID=1
 
 # Application definition
 
@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.google'
+    'allauth.socialaccount.providers.google',
+    'channels'
 ]
 
 SOCIALACCOUNT_PROVIDERS = {
