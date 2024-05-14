@@ -83,10 +83,10 @@ Add your task decomposition here.
 - Optimize preference settings for performance ✔️
 
 ### Week 10:
-- Implement feature: Report and Block Functionality
-- Develop backend endpoints for reporting and blocking users
-- Design UI for reporting and blocking features
-- Test reporting and blocking functionality
+- Implement feature: Report and Block Functionality ✔️
+- Develop backend endpoints for reporting and blocking users ✔️
+- Design UI for reporting and blocking features ✔️
+- Test reporting and blocking functionality ✔️
 - Implement moderation tools for handling reports
 
 ### Week 11:
