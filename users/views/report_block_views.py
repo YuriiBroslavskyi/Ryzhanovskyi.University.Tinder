@@ -38,11 +38,9 @@ def block_user(request, blocked_user_id):
         except Profile.DoesNotExist:
             return HttpResponse('Blocked user does not exist', status=404)
         
-        if Block.objects.filter(blocker=request.user, blocked_user=blocked_user.user).exists():
-            return HttpResponse('User is already blocked')
-
-        block = Block(blocker=blocker, blocked_user=blocked_user.user)
-        block.save()
-        return redirect('card')
+        if not Block.objects.filter(blocker=request.user, blocked_user=blocked_user.id).exists():
+            block = Block(blocker=blocker, blocked_user=blocked_user.user)
+            block.save()
+            return redirect('card')
     else:
         return HttpResponseNotAllowed(['POST', 'GET'])

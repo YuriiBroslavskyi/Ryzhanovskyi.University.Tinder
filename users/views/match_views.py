@@ -132,8 +132,9 @@ def match_algorithm_byGender(user):
     block_profiles = Block.objects.filter(blocker=user).values_list('blocked_user', flat=True)
     liked_profiles = ProfileLike.objects.filter(user=user).values_list('liked_profile', flat=True)
     disliked_profiles = ProfileDislike.objects.filter(user=user).values_list('disliked_profile', flat=True)
-
     liked_or_disliked_profiles = liked_profiles.union(disliked_profiles, block_profiles)
+    matched_profiles = other_profiles.exclude(user__in=liked_or_disliked_profiles)
+
 
     if match_gender == 'Both':
         matched_profiles = other_profiles.exclude(user__in=liked_or_disliked_profiles)

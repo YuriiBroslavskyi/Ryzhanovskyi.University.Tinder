@@ -24,9 +24,9 @@ urlpatterns = [
     path('dislike/<str:username>/', like_views.dislike_profile, name='dislike_profile'),
     path('match-settings/', match_views.match_settings, name='match_settings'),
     path('ws/chat/', chat_views.chat, name='chat'),
-    path('report/<int:reported_user_id>/reason/', report_block_views.report_reason, name='report_reason'),
-    path('report/<int:reported_user_id>/', report_block_views.report_user, name='report_profile'),
-    path('block/<int:blocked_user_id>/', report_block_views.block_user, name='block_profile'),
+    path('report/<str:username>/reason/', report_block_views.report_reason, name='report_reason'),
+    path('report/<str:username>/', report_block_views.report_user, name='report_profile'),
+    path('block/<str:username>/', report_block_views.block_user, name='block_profile'),
     path('feedback/', feedback_views.feedback, name='feedback'),
 ]
 
