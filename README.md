@@ -90,11 +90,11 @@ Add your task decomposition here.
 - Implement moderation tools for handling reports
 
 ### Week 11:
-- Implement feature: Feedback System
-- Set up feedback submission form
-- Develop backend functionality for processing feedback
+- Implement feature: Feedback System ✔️
+- Set up feedback submission form ✔️
+- Develop backend functionality for processing feedback ✔️
 - Design admin interface for reviewing feedback
-- Test feedback submission and response workflow
+- Test feedback submission and response workflow ✔️
 
 ### Week 12:
 - Conduct final testing and bug fixing
