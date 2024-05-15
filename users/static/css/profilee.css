@@ -1,15 +1,14 @@
-/* Resetting default browser styles */
 body, h2, p {
+    margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
 }
 
-/* Body styles */
 body {
     background-color: #f9f9f9;
     padding: 20px;
 }
 
-/* Heading styles */
 h2 {
     color: #333;
     text-align: center;
@@ -19,7 +18,9 @@ h2 {
 /* Profile details container */
 .profile-container {
     max-width: 600px;
-    margin: 83px 0px 7px 196px;
+    position: relative;
+    top: 125px;
+    margin: 0 auto;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -33,9 +34,10 @@ h2 {
 
 /* Profile photo styles */
 .profile-photo {
-    width: 124px;
-    height: 124px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
+    margin: 0 auto;
     display: block;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     margin-bottom: 10px;
@@ -50,35 +52,3 @@ h2 {
 .unverified-badge {
     color: #c0392b;
 }
-
-/* button{
-    padding: 10px 20px;
-    background-color: pink;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-} */
-
-.icons {
-    margin: 450px;
-    display: flex;
-    margin-top: 10px;
-    user-select: none;
-    z-index: 1;
-  }
-  
-.icons > svg {
-    width: 10vh;
-    height: 10vh;
-    max-width: 60px;
-    max-height: 60px;
-    border-radius: 50%;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-  }
-
-.icons > svg:nth-child(1) { fill: #fb4f68; margin-right: 2vh; }
-.icons > svg:nth-child(2) { fill: #4dca93; }
-.icons > svg > path:nth-child(1) { fill: #fff; }
-

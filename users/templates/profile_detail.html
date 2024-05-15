@@ -5,14 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profilee.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
-
-    <title>Profile Detail</title>
 </head>
 <body>
     {% include 'layout.html' %}
-    <h2>Profile Detail</h2>
+    <h2 style="position: relative; top: 120px;">Profile Detail</h2>
     {% if user.is_authenticated %}
         {% with profile=user.profile %}
             <div class="profile-container">
@@ -38,9 +36,9 @@
                     {% endfor %}
                 </p>
             </div>
-            <div>
+            <!-- <div>
                 <button class="submit">Settings</button>
-            </div>
+            </div> -->
         {% endwith %}
     {% endif %}
 </body>

@@ -5,21 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/card.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cardd.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
 
     <title>Profile Detail</title>
 </head>
     {% include 'layout.html' %}
 <body>
-    <div>
-        <p>Your preferences {{user.profile.preferences}}</p>
-        <p>Your hobby  {% for hobby in user.profile.hobby.all %}
-            {{ hobby.name }}
-            {% if not forloop.last %}, {% endif %}
-        {% endfor %}
-        </p>
-    </div>
+
     <div class="profile-container">
         {% if profile.photo %}
         <img src="{{ profile.photo.url }}" alt="Profile Photo" class="profile-photo">
@@ -47,8 +40,6 @@
             </form>
         </div>
         
-        
-
         <div>
             <a href="{% url 'report_reason' profile.user.id %}" class="link">Report</a>
         </div>

@@ -9,10 +9,11 @@ header {
 }
 
 .nav {
-    position: relative;
+    position: fixed;
     height: 8vh;
     display: flex;
     align-items: center;
+    background-image: url("/static/src/noise.png");
     padding: 0 0px;
     width: 100%;
 }
