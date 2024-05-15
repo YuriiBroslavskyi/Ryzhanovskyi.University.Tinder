@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat</title>
+</head>
+{% include 'layout.html' %}
+
+<body>
+    <input id="chat-input" type="text" placeholder="Type a message...">
+    <button id="send-button">Send</button>
+    <ul id="chat-messages"></ul>
+
+    <script>
+        // Function to handle incoming messages
+        function handleMessage(message) {
+            const messageElement = document.createElement('li');
+            messageElement.innerText = message;
+            document.getElementById('chat-messages').appendChild(messageElement);
+        }
+
+        // Establish WebSocket connection
+        const chatSocket = new WebSocket('ws://localhost:8000/ws/chat/');
+
+        chatSocket.onopen = function(event) {
+            console.log('WebSocket connection established.');
+        };
+
+        chatSocket.onmessage = function(event) {
+            const message = JSON.parse(event.data).message;
+            handleMessage(message);
+        };
+
+        // Function to send a message
+        function sendMessage() {
+            const messageInputDom = document.getElementById('chat-input');
+            const message = messageInputDom.value;
+            chatSocket.send(JSON.stringify({
+                'message': message
+            }));
+            messageInputDom.value = '';
+        }
+
+        // Event listener for send button click
+        document.getElementById('send-button').addEventListener('click', function() {
+            sendMessage();
+        });
+
+        // Event listener for pressing Enter key
+        document.getElementById('chat-input').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>
