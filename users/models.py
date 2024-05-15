@@ -73,3 +73,9 @@ class Block(models.Model):
     blocker = models.ForeignKey(User, on_delete=models.CASCADE)
     blocked_user = models.ForeignKey(User, related_name='blocked_user', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+
+class Feedback(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    message = models.TextField()
+    rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)])  
+    created_at = models.DateTimeField(auto_now_add=True)

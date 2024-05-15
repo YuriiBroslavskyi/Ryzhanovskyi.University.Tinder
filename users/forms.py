@@ -1,6 +1,6 @@
 from datetime import date
 from django import forms
-from .models import Profile
+from .models import Profile, Feedback
 from django.forms import ValidationError
 from django.utils.translation import gettext_lazy as _
 
@@ -31,4 +31,12 @@ class ProfileForm(forms.ModelForm):
                 )
         return date_of_birth
     
-    
+
+class FeedbackForm(forms.ModelForm):
+    class Meta:
+        model = Feedback
+        fields = ['message', 'rating']
+        widgets = {
+            'message': forms.Textarea(attrs={'class': 'feedback_message', 'placeholder': 'Enter Here '}),
+            'rating': forms.Select(choices=[(i, i) for i in range(1, 6)]),
+        }

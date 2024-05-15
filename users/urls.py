@@ -5,6 +5,7 @@ from .views import views
 from .views import like_views
 from .views import chat_views
 from .views import report_block_views
+from .views import feedback_views
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -25,7 +26,8 @@ urlpatterns = [
     path('ws/chat/', chat_views.chat, name='chat'),
     path('report/<int:reported_user_id>/reason/', report_block_views.report_reason, name='report_reason'),
     path('report/<int:reported_user_id>/', report_block_views.report_user, name='report_profile'),
-    path('block/<int:blocked_user_id>/', report_block_views.block_user, name='block_profile'),  
+    path('block/<int:blocked_user_id>/', report_block_views.block_user, name='block_profile'),
+    path('feedback/', feedback_views.feedback, name='feedback'),
 ]
 
 
