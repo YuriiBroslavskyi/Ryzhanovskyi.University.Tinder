@@ -14,7 +14,7 @@ def report_user(request, reported_user_id):
             return HttpResponse('Reason is required', status=400)
 
         try:
-            reported_user = Profile.objects.get(id=reported_user_id)
+            reported_user = Profile.objects.get(username=reported_user_id)
         except Profile.DoesNotExist:
             return HttpResponse('Reported user does not exist', status=404)
 
