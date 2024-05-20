@@ -19,10 +19,10 @@
                 {% if profile.photo %}
                 <img src="{{ profile.photo.url }}" alt="Profile Photo" class="profile-photo">
                 {% else %}
-                <p>No photo available</p>
+                <img src="{% static 'src/no_photo.png' %}" alt="Profile Photo" class="profile-photo">
                 {% endif %}
                 <p><strong>Email:</strong> {{ profile.user.email }}</p>
-                <p><strong>Email:</strong> {{ profile.user.username }}</p>
+                <p><strong>Username:</strong> {{ profile.user.username }}</p>
                 <p><strong>First name:</strong> {{ profile.first_name }}</p>
                 <p><strong>Last name:</strong> {{ profile.last_name }}</p>
                 <p><strong>Date of Birth:</strong> {{ profile.date_of_birth }}</p>
