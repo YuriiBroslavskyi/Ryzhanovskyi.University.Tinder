@@ -85,7 +85,7 @@ ROOT_URLCONF = 'TinderClone.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -160,7 +160,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Define the directory where your static files are located
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [STATIC_DIR]
+STATICFILES_DIRS = [STATIC_DIR] 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
