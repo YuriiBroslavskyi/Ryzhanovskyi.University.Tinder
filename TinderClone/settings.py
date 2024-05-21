@@ -112,6 +112,7 @@ WSGI_APPLICATION = 'TinderClone.wsgi.application'
 #     }
 # }
 
+
 DATABASES = {
     "default": {
         "ENGINE": "mssql",
@@ -121,7 +122,7 @@ DATABASES = {
         "HOST": "loveconnect.database.windows.net",
         "PORT": "1433",
         "OPTIONS": {"driver": "ODBC Driver 18 for SQL Server",
-                    "timeout": 30,
+                        "timeout": 220,
         },
     },
 }
