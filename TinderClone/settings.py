@@ -11,9 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 import os
-import sys
 from pathlib import Path
-import environ
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -29,7 +27,7 @@ SECRET_KEY = 'django-insecure-%!%mmb$)6m@l_r)r9y87^cdv0=w3ofexzj_iqc+ab)(dw!1)-1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['gnomelove.azurewebsites.net', '127.0.0.1', '*']
+ALLOWED_HOSTS = ['gnomelove.azurewebsites.net', '127.0.0.1']
 
 
 CSRF_TRUSTED_ORIGINS = ['https://gnomelove.azurewebsites.net']
@@ -122,7 +120,8 @@ DATABASES = {
         "PASSWORD": "gnomeLove228!",
         "HOST": "loveconnect.database.windows.net",
         "PORT": "1433",
-        "OPTIONS": {"driver": "ODBC Driver 18 for SQL Server", 
+        "OPTIONS": {"driver": "ODBC Driver 18 for SQL Server",
+                    "timeout": 30,
         },
     },
 }
