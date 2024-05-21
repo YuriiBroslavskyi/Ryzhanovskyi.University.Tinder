@@ -122,7 +122,7 @@ DATABASES = {
         "HOST": "loveconnect.database.windows.net",
         "PORT": "1433",
         "OPTIONS": {"driver": "ODBC Driver 18 for SQL Server",
-                        "timeout": 220,
+                        "timeout": 300,
         },
     },
 }
