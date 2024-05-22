@@ -37,7 +37,7 @@ DATABASES = {
         },
     },
 }
-
+```
 ## Project Task Decomposition
 Add your task decomposition here.
 
