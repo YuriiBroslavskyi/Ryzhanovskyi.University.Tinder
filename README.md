@@ -122,8 +122,8 @@ Add your task decomposition here.
 - Test feedback submission and response workflow ✔️
 
 ### Week 12:
-- Conduct final testing and bug fixing ✔️
-- Prepare for deployment to production environment
+- Conduct final testing and bug fixing  
+- Prepare for deployment to production environment ✔️
 - Create documentation for project setup and maintenance ✔️
-- Perform load testing and performance optimization
-- Launch Love Connect to the public
+- Perform load testing and performance optimization 
+- Launch Love Connect to the public ✔️
