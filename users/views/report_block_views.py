@@ -14,7 +14,7 @@ def report_user(request, reported_user_id):
             return HttpResponse('Reason is required', status=400)
 
         try:
-            reported_user = Profile.objects.get(username=reported_user_id)
+            reported_user = Profile.objects.get(id=reported_user_id)
         except Profile.DoesNotExist:
             return HttpResponse('Reported user does not exist', status=404)
 
@@ -32,15 +32,17 @@ def report_reason(request, reported_user_id):
 def block_user(request, blocked_user_id):
     if request.method == 'POST':
         blocker = request.user
-        
+
         try:
             blocked_user = Profile.objects.get(id=blocked_user_id)
         except Profile.DoesNotExist:
             return HttpResponse('Blocked user does not exist', status=404)
-        
-        if not Block.objects.filter(blocker=request.user, blocked_user=blocked_user.id).exists():
-            block = Block(blocker=blocker, blocked_user=blocked_user.user)
-            block.save()
-            return redirect('card')
+
+        if Block.objects.filter(blocker=request.user, blocked_user=blocked_user.user.id).exists():
+            return HttpResponse('User is already blocked')
+
+        block = Block(blocker=blocker, blocked_user=blocked_user.user)
+        block.save()
+        return redirect('card')
     else:
         return HttpResponseNotAllowed(['POST', 'GET'])

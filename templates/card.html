@@ -33,8 +33,8 @@
         <p><strong>Description:</strong> {{ profile.description }}</p>
 
         <div>
-            <a href="#" class="link" onclick="submitBlockForm('{{ profile.user.id }}')">Block</a>
-            <form id="blockForm{{ profile.user.id }}" action="{% url 'block_profile' profile.user.id %}" method="post" style="display: none;">
+            <a href="#" class="link" onclick="submitBlockForm('{{ profile.id }}')">Block</a>
+            <form id="blockForm{{ profile.id }}" action="{% url 'block_profile' profile.id %}" method="post" style="display: none;">
                 {% csrf_token %}
                 <button type="submit"></button>
             </form>
