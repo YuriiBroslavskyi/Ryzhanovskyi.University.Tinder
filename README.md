@@ -1,5 +1,9 @@
 ## Tinder project
 
+The TinderClone Web App is a platform designed to replicate the functionality of the popular dating application Tinder. It allows users to create profiles, view profiles of other users, and engage in mutual liking, messaging, and potential dating matches. This documentation provides an overview of the features, installation instructions, usage guidelines, and maintenance procedures for the TinderClone Web App.
+
+
+
 ## Author
 Mykhailo Ryzkhanovskyi
 
@@ -16,7 +20,6 @@ site on azure - https://gnomelove.azurewebsites.net/
 - and run the server:
 - python manage.py runserver
 
-## Project Documentation
 For models migration 
   - manage.py makemigrations
   - manage.py migrate
