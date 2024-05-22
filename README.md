@@ -22,19 +22,22 @@ For models migration
   - manage.py migrate
 For connect database 
   - in settings.py scroll down and here
-    DATABASES = {
+```python
+DATABASES = {
     "default": {
         "ENGINE": "mssql",
         "NAME": "your database name",
         "USER": "your database server username",
         "PASSWORD": "your database server password",
-        "HOST": "your database adress",
+        "HOST": "your database address",
         "PORT": "1433",
-        "OPTIONS": {"driver": "ODBC Driver 18 for SQL Server",
-                        "timeout": 300,
+        "OPTIONS": {
+            "driver": "ODBC Driver 18 for SQL Server",
+            "timeout": 300,
         },
     },
 }
+
 ## Project Task Decomposition
 Add your task decomposition here.
 
