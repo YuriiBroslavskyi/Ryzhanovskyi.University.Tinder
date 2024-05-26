@@ -127,3 +127,9 @@ Add your task decomposition here.
 - Create documentation for project setup and maintenance ✔️
 - Perform load testing and performance optimization 
 - Launch Love Connect to the public ✔️
+
+
+## Antilab #2
+  - Boyko Dmytro
+  - [Link to Boyko Dmytro project](https://github.com/BoykoDmytr/Boyko.University.FeP-1)
+  - [Link to Boyko Dmtro Pull Request](https://github.com/BoykoDmytr/Ryzhanovskyi.University.Tinder/pull/1)
