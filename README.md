@@ -132,4 +132,4 @@ Add your task decomposition here.
 ## Antilab #2
   - Boyko Dmytro
   - [Link to Boyko Dmytro project](https://github.com/BoykoDmytr/Boyko.University.FeP-1)
-  - [Link to Boyko Dmtro Pull Request](https://github.com/BoykoDmytr/Ryzhanovskyi.University.Tinder/pull/1)
+  - [Link to Boyko Dmytro Pull Request](https://github.com/BoykoDmytr/Ryzhanovskyi.University.Tinder/pull/1)
