@@ -1,5 +1,9 @@
 ## Tinder project
 
+The TinderClone Web App is a platform designed to replicate the functionality of the popular dating application Tinder. It allows users to create profiles, view profiles of other users, and engage in mutual liking, messaging, and potential dating matches. This documentation provides an overview of the features, installation instructions, usage guidelines, and maintenance procedures for the TinderClone Web App.
+
+
+
 ## Author
 Mykhailo Ryzkhanovskyi
 
@@ -7,15 +11,36 @@ midzkage@gmail.com
 
 https://t.me/muchailoliluzivert
 
+site on azure - https://gnomelove.azurewebsites.net/
+
 ## Getting Started
 - To start project in the terminal firtst you to go to the project:
 - cd .\TinderClone\
+- pip install -r requirements. txt
 - and run the server:
 - python manage.py runserver
 
-## Project Documentation
-Add your project documentation here.
-
+For models migration 
+  - manage.py makemigrations
+  - manage.py migrate
+For connect database 
+  - in settings.py scroll down and here
+```python
+DATABASES = {
+    "default": {
+        "ENGINE": "mssql",
+        "NAME": "your database name",
+        "USER": "your database server username",
+        "PASSWORD": "your database server password",
+        "HOST": "your database address",
+        "PORT": "1433",
+        "OPTIONS": {
+            "driver": "ODBC Driver 18 for SQL Server",
+            "timeout": 300,
+        },
+    },
+}
+```
 ## Project Task Decomposition
 Add your task decomposition here.
 
@@ -97,8 +122,8 @@ Add your task decomposition here.
 - Test feedback submission and response workflow ✔️
 
 ### Week 12:
-- Conduct final testing and bug fixing
-- Prepare for deployment to production environment
-- Create documentation for project setup and maintenance
-- Perform load testing and performance optimization
-- Launch Love Connect to the public
+- Conduct final testing and bug fixing  
+- Prepare for deployment to production environment ✔️
+- Create documentation for project setup and maintenance ✔️
+- Perform load testing and performance optimization 
+- Launch Love Connect to the public ✔️
