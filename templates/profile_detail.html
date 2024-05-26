@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profilee.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
+    <link rel="icon" href="{% static 'src/favicon.ico' %}" type="image/x-icon">
+</head>
+<body>
+    {% include 'layout.html' %}
+    <h2 style="position: relative; top: 120px;">Profile Detail</h2>
+    {% if user.is_authenticated %}
+        {% with profile=user.profile %}
+            <div class="profile-container">
+                <!-- <p><strong>Username:</strong> {{ profile.user.username }}</p> -->
+                {% if profile.photo %}
+                <img src="{{ profile.photo.url }}" alt="Profile Photo" class="profile-photo">
+                {% else %}
+                <img src="{% static 'src/no_photo.png' %}" alt="Profile Photo" class="profile-photo">
+                {% endif %}
+                <p><strong>Email:</strong> {{ profile.user.email }}</p>
+                <p><strong>Username:</strong> {{ profile.user.username }}</p>
+                <p><strong>First name:</strong> {{ profile.first_name }}</p>
+                <p><strong>Last name:</strong> {{ profile.last_name }}</p>
+                <p><strong>Date of Birth:</strong> {{ profile.date_of_birth }}</p>
+                <p><strong>Gender:</strong> {{ profile.gender }}</p>
+                <p><strong>Mathc Gender:</strong> {{ profile.match_gender }}</p>
+                <p><strong>City:</strong> {{ profile.city }}</p>
+                <p><strong>Description:</strong> {{ profile.description }}</p>
+                <p><strong>Hobbies:</strong>
+                    {% for hobby in profile.hobby.all %}
+                        {{ hobby.name }}
+                        {% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
+            </div>
+            <!-- <div>
+                <button class="submit">Settings</button>
+            </div> -->
+        {% endwith %}
+    {% endif %}
+</body>
+<footer>
+    <div class="footer-container">
+        <p>&copy; 2024 GnomeLove. All rights reserved.</p>
+    </div>
+</footer>
+</html>

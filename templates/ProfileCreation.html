@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profileeCreationn.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
+    <link rel="icon" href="{% static 'src/favicon.ico' %}" type="image/x-icon">
+    <title>User Profile Creation</title>
+</head>
+<body>
+    {% include 'layout.html' %}
+
+    <h2>User Profile Creation</h2>
+    <form id="profile-form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div class="first_name-container">
+            <label for="id_first_name">First Name:</label>
+            {{ form.first_name }}
+            {% if form.errors.first_name %}
+                <div class="error-message">{{ form.errors.first_name }}</div>
+            {% endif %}
+        </div>
+
+        <div class="last_name-container">
+            <label for="id_last_name">Last Name:</label>
+            {{ form.last_name }}
+            {% if form.errors.last_name %}
+                <div class="error-message">{{ form.errors.last_name }}</div>
+            {% endif %}
+        </div>
+        <div class="photo-container">
+            <label for="id_photo">Photo:</label>
+            {{ form.photo }}
+            {% if form.errors.photo %}
+                <div class="error-message">{{ form.errors.photo }}</div>
+            {% endif %}
+        </div>
+        <div class="gender-container">
+            <label for="id_gender">Gender:</label>
+            {{ form.gender }}
+            {% if form.errors.gender %}
+                <div class="error-message">{{ form.errors.gender }}</div>
+            {% endif %}
+        </div>
+        <div class="gender-container">
+            <label for="id_match_gender">Which gender you want to search:</label>
+            {{ form.match_gender }}
+            {% if form.errors.match_gender %}
+                <div class="error-message">{{ form.errors.match_gender }}</div>
+            {% endif %}
+        </div>
+        <div class="city-container">
+            <label for="id_city">City:</label>
+            {{ form.city }}
+            {% if form.errors.city %}
+                <div class="error-message">{{ form.errors.city }}</div>
+            {% endif %}
+        </div>
+        <div class="age-container">
+            <label for="id_age">Date of birth:</label>
+            {{ form.date_of_birth }}
+            {% if form.errors.date_of_birth %}
+                <div class="error-message">{{ form.errors.date_of_birth }}</div>
+            {% endif %}
+        </div>
+        <div class="hobby-container">
+            <p>Hobby</p>
+            {{ form.hobby }}
+            {% if form.errors.hobby %}
+                <div class="error-message">{{ form.errors.hobby }}</div>
+            {% endif %}
+        </div>
+        <div class="description-container">
+            <label for="id_description">Description:</label>
+            {{ form.description }}
+            {% if form.errors.description %}
+                <div class="error-message">{{ form.errors.description }}</div>
+            {% endif %}
+        </div>
+        
+        <button class="submit">Submit</button>
+    </form>
+    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script>  
+    <script>
+        new MultiSelectTag('Hobby')  
+    </script>
+        <footer>
+            <div class="footer-container">
+                <p>&copy; 2024 GnomeLove. All rights reserved.</p>
+            </div>
+        </footer>
+</body>
+</html>

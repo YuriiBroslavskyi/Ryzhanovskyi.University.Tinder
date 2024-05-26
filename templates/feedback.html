@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/feedbackk.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
+    <link rel="icon" href="{% static 'src/favicon.ico' %}" type="image/x-icon">
+    <title>Feedback Form</title>
+    {% include 'layout.html' %}
+</head>
+<body>
+    <p style="font-size: 30px; font-style:italic; font-family: cursive; text-align: center; position: relative; top: 120px;">Hello we`d love to hear your impression about gnomeLove service! </p>
+    <form method="post" class="feedback-form">
+        
+        {% csrf_token %}
+        <p style="font-size: large; font-style:initial; font-family: cursive;"
+        > Enter ur message</p>
+        {{ form.message }}
+        <p style="font-size: large; font-style:initial; font-family: cursive;"
+        > How would you rate us?!</p>
+        {{ form.rating }}
+        <button type="submit">send Feedback</button>
+    </form>
+</body>
+<footer>
+    <div class="footer-container">
+        <p>&copy; 2024 GnomeLove. All rights reserved.</p>
+    </div>
+</footer>        
+        
+    

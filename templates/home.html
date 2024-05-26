@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link href="{% static 'css/home.css' %}" rel="stylesheet">    
+    <link href="{% static 'css/footer.css' %}" rel="stylesheet">    
+    <link rel="icon" href="{% static 'src/favicon.ico' %}" type="image/x-icon">
+
+    <title>Gnome Love</title>
+</head>
+<body>
+{% include 'layout.html' %}
+
+<div class="home-container">
+    {% if user.is_authenticated %}
+        <p>You are signed in as {{ user.email }}</p>
+        <div id="rateUsSection" style="display: none;">
+            <p>Want to rate us?</p>
+            <a href="{% url 'feedback' %}" class="link">Rate us!</a>
+        </div>
+        <a href="{% url 'feedback' %}" class="link" style="display: none;">Rate us!</a>
+    {% else %}
+        <p>You are not signed in. Please sign in or register.</p>
+        <a href="{% url 'googleLogin' %}" class="login-btn" 
+        style="background-color: pink; color: white; padding: 10px 30px; border-radius: 20px; text-decoration: none;">
+        Login</a>
+    {% endif %}
+</div>
+<footer>
+    <div class="footer-container">
+        <p>&copy; 2024 GnomeLove. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    setInterval(function() {
+        var rateUsSection = document.getElementById("rateUsSection");
+        if (rateUsSection.style.display === "none") {
+            rateUsSection.style.display = "block";
+        } else {
+            rateUsSection.style.display = "none";
+        }
+    }, 10000);
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reportt.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
+    <link rel="icon" href="{% static 'src/favicon.ico' %}" type="image/x-icon">
+    <title>Enter Report Reason</title>
+</head>
+
+<body>
+    {% include 'layout.html' %}
+    <h1 style="position: relative; top: 120px;">Enter Reason for Reporting User</h1>
+    <form action="{% url 'report_profile' reported_user_id %}" method="post">
+        {% csrf_token %}
+        <textarea id="reason" name="reason" rows="4" cols="50"></textarea><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("report").addEventListener("click", function() {
+                fetch(`/report/${profile.user.id}/`)
+                .then(response => response.json())
+                .then(data => {
+                    window.location.reload();
+                })
+                .catch(error => console.error("Error fetching next profile:", error));
+            });
+        });
+    </script>
+</body>
+<footer>
+    <div class="footer-container">
+        <p>&copy; 2024 GnomeLove. All rights reserved.</p>
+    </div>
+</footer>
+</html>

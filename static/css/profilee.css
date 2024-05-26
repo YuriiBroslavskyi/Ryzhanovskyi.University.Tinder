@@ -1,0 +1,54 @@
+body, h2, p {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Profile details container */
+.profile-container {
+    max-width: 600px;
+    position: relative;
+    top: 125px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile detail paragraph styles */
+.profile-container p {
+    margin-bottom: 10px;
+}
+
+/* Profile photo styles */
+.profile-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: block;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+}
+
+/* Verified badge styles */
+.verified-badge {
+    color: #27ae60;
+}
+
+/* Unverified badge styles */
+.unverified-badge {
+    color: #c0392b;
+}
