@@ -1,0 +1,76 @@
+/* Resetting default browser styles */
+body, h2, p {
+    font-family: Arial, sans-serif;
+}
+
+/* Body styles */
+body {
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+/* Heading styles */
+h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-container {
+    max-width: 45vh;
+    position: relative;
+    top: 140px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile detail paragraph styles */
+.profile-container p {
+    margin-bottom: 10px;
+}
+
+/* Profile photo styles */
+.profile-photo {
+    width: 124px;
+    height: 124px;
+    border-radius: 50%;
+    display: block;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+}
+
+/* Verified badge styles */
+.verified-badge {
+    color: #27ae60;
+}
+
+/* Unverified badge styles */
+.unverified-badge {
+    color: #c0392b;
+}
+
+.icons {
+    justify-content: center;
+    display: flex;
+    position: relative;
+    top: 145px;
+    margin-top: 10px;
+    user-select: none;
+
+  }
+  
+.icons > svg {
+    max-width: 60px;
+    max-height: 60px;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+
+.icons > svg:nth-child(1) { fill: #fb4f68; margin-right: 2vh; }
+.icons > svg:nth-child(2) { fill: #4dca93; }
+.icons > svg > path:nth-child(1) { fill: #fff; }
+
