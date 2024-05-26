@@ -133,3 +133,7 @@ Add your task decomposition here.
   - Boyko Dmytro
   - [Link to Boyko Dmytro project](https://github.com/BoykoDmytr/Boyko.University.FeP-1)
   - [Link to Boyko Dmytro Pull Request](https://github.com/BoykoDmytr/Ryzhanovskyi.University.Tinder/pull/1)
+
+  - Yurii Broslavskyi
+  - [Link to Yurii Broslavskyi project](https://github.com/YuriiBroslavskyi/Broslavskyi.University.Online-Gaming-Tournament-Platform)
+  - [Link to Yurii Broslavskyi Pull Request](https://github.com/YuriiBroslavskyi/Ryzhanovskyi.University.Tinder/pull/1)
